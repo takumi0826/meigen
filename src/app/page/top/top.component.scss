@@ -1,0 +1,29 @@
+.main {
+  padding: 120px 16px 0 16px;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.size {
+  text-align: center;
+  &__title {
+    font-size: 24px;
+  }
+
+  &__buttonWrap {
+    display: block;
+  }
+}
+
+.card-area {
+  margin-top: 120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media screen and (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+  gap: 16px;
+}

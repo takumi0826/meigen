@@ -1,0 +1,18 @@
+<mat-form-field appearance="outline">
+  <mat-label>サイズ</mat-label>
+  <input
+    matInput
+    placeholder="例）10cm"
+    [formControl]="sizeFormControl"
+    (blur)="onBlur()"
+  />
+  <span matSuffix>cm</span>
+  <mat-hint>数値で入力</mat-hint>
+  <mat-error
+    *ngIf="
+      sizeFormControl.hasError('required') ||
+      sizeFormControl.hasError('pattern')
+    "
+    >数値で入力してね</mat-error
+  >
+</mat-form-field>
