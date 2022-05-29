@@ -11,6 +11,7 @@ import { HeaderComponent } from './parts/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MeigenCardComponent } from './parts/meigen-card/meigen-card.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TopComponent,
     InputSizeComponent,
     HeaderComponent,
+    MeigenCardComponent,
   ],
   imports: [
     BrowserModule,

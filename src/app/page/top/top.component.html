@@ -1,24 +1,17 @@
 <main class="main">
   <div class="container size">
-    <h1 class="size__title">何センチ？</h1>
-    <app-input-size (blur)="onBlur($event)"></app-input-size>
-    <div class="size__buttonWrap">
+    <h1 class="size__title">名言をさがす</h1>
+    <app-input-size
+      (blur)="onSearch($event)"
+      (enter)="onSearch($event)"
+    ></app-input-size>
+    <!-- <div class="size__buttonWrap">
       <button mat-raised-button color="primary">検索</button>
-    </div>
+    </div> -->
   </div>
   <div class="card-area">
-    <mat-card class="example-card" *ngFor="let item of itemList$ | async">
-      <mat-card-title-group>
-        <mat-card-title>{{ item.name }}</mat-card-title>
-        <mat-card-subtitle>Small</mat-card-subtitle>
-        <img
-          mat-card-sm-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        />
-      </mat-card-title-group>
-      <mat-card-content>
-        {{ item.description }}
-      </mat-card-content>
-    </mat-card>
+    <div class="" *ngFor="let item of itemList$ | async">
+      <app-meigen-card [item]="item"></app-meigen-card>
+    </div>
   </div>
 </main>

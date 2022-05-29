@@ -8,26 +8,37 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class InputSizeComponent implements OnInit {
   value = '';
-  numberRegEx = /^[+,-]?([1-9]\d*|0)(\.\d+)?$/;
-  sizeFormControl = new FormControl(this.value, [
-    Validators.required,
-    Validators.pattern(this.numberRegEx),
-  ]);
-  @Output() blur = new EventEmitter<number>();
+  sizeFormControl = new FormControl(this.value, [Validators.required]);
+  @Output() blur = new EventEmitter<string>();
+  @Output() enter = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   isVaildate() {
-    return (
-      this.sizeFormControl.hasError('required') ||
-      this.sizeFormControl.hasError('pattern')
-    );
+    return this.sizeFormControl.hasError('required');
   }
 
   onBlur() {
     if (this.isVaildate()) return;
-    this.blur.emit(Number(this.sizeFormControl.value));
+    this.blur.emit(this.hiraganaToKatakana(this.sizeFormControl.value));
+  }
+
+  onEnter() {
+    this.enter.emit(this.hiraganaToKatakana(this.sizeFormControl.value));
+    this.sizeFormControl.reset();
+  }
+
+  private hiraganaToKatakana(str: string) {
+    if (!this.isHiragana(str)) return str;
+    return str.replace(/[\u3041-\u3096]/g, (match) => {
+      var chr = match.charCodeAt(0) + 0x60;
+      return String.fromCharCode(chr);
+    });
+  }
+
+  private isHiragana(str: string) {
+    return str.match(/^[ぁ-んー　]*$/);
   }
 }

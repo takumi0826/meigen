@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TopService } from 'src/app/services/top.service';
-import { Item, ItemDetail } from 'src/app/types/type';
+import { Item } from 'src/app/types/type';
 
 @Component({
   selector: 'app-top',
@@ -9,7 +9,8 @@ import { Item, ItemDetail } from 'src/app/types/type';
   styleUrls: ['./top.component.scss'],
 })
 export class TopComponent implements OnInit {
-  itemList = new BehaviorSubject<ItemDetail[]>([]);
+  panelOpenState = false;
+  itemList = new BehaviorSubject<Item[]>(this.topService.getItemData(''));
   get itemList$() {
     return this.itemList.asObservable();
   }
@@ -18,11 +19,9 @@ export class TopComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onBlur(value: number) {
+  onSearch(value: string) {
     console.log(value);
-    const itemData = this.topService.getItemData();
-    const filteredItem =
-      itemData.find((v) => v.size === value)?.itemDetail || [];
-    this.itemList.next(filteredItem);
+    const itemData = this.topService.getItemData(value);
+    this.itemList.next(itemData);
   }
 }
