@@ -18,13 +18,6 @@ export const itemData: Item[] = [
     category: categoryType.anime,
   },
   {
-    meigen: `努力せずに何かできるようになる人のことを「天才」というのなら、僕はそうじゃない。
-努力した結果、何かができるようになる人のことを「天才」というのなら、僕はそうだと思う。
-人が僕のことを、努力もせずに打てるんだと思うなら、それは間違いです。`,
-    name: 'イチロー',
-    category: categoryType.anime,
-  },
-  {
     meigen: '人はそれぞれ事情をかかえ、平然と生きている',
     name: '伊集院静',
     category: categoryType.anime,
@@ -33,6 +26,12 @@ export const itemData: Item[] = [
     meigen:
       '努力は必ず報われる。もし報われない努力があるのならば、それはまだ努力と呼べない',
     name: '王貞治',
+    category: categoryType.anime,
+  },
+  {
+    meigen:
+      '努力せずに何かできるようになる人のことを「天才」というのなら、僕はそうじゃない。努力した結果、何かができるようになる人のことを「天才」というのなら、僕はそうだと思う。人が僕のことを、努力もせずに打てるんだと思うなら、それは間違いです。',
+    name: 'イチロー',
     category: categoryType.anime,
   },
   {
@@ -51,25 +50,25 @@ export const itemData: Item[] = [
     category: categoryType.anime,
   },
   {
-    meigen: `壁というのは、できる人にしかやってこない。
-超えられる可能性がある人にしかやってこない。
-だから、壁がある時はチャンスだと思っている。`,
+    meigen:
+      '壁というのは、できる人にしかやってこない。超えられる可能性がある人にしかやってこない。だから、壁がある時はチャンスだと思っている。',
     name: 'イチロー',
     category: categoryType.anime,
   },
   {
-    meigen: `特別なことをするために特別なことをするのではない、特別なことをするために普段どおりの当たり前のことをする。`,
+    meigen:
+      '特別なことをするために特別なことをするのではない、特別なことをするために普段どおりの当たり前のことをする。',
     name: 'イチロー',
     category: categoryType.anime,
   },
   {
-    meigen: `びっくりするような好プレイが、勝ちに結びつくことは少ないです。
-確実にこなさないといけないプレイを確実にこなせるチームは強いと思います。`,
+    meigen:
+      'びっくりするような好プレイが、勝ちに結びつくことは少ないです。確実にこなさないといけないプレイを確実にこなせるチームは強いと思います。',
     name: 'イチロー',
     category: categoryType.anime,
   },
   {
-    meigen: `とりあえず笑え`,
+    meigen: 'とりあえず笑え',
     name: '匿名',
     category: categoryType.anime,
   },

@@ -1,8 +1,12 @@
-<mat-card class="example-card">
+<mat-card class="example-card gradient-bg">
   <mat-card-title-group>
     <mat-card-title>{{ item.name }}</mat-card-title>
     <mat-card-subtitle>Small</mat-card-subtitle>
-    <img mat-card-sm-image src="/assets/img/{{ cardImage }}" />
+    <img
+      class="card__image"
+      mat-card-sm-image
+      src="/assets/img/{{ cardImage }}"
+    />
   </mat-card-title-group>
   <mat-card-content>
     {{ item.meigen }}
