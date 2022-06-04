@@ -1,3 +1,11 @@
-.card__image {
-  border-radius: 100%;
+.card {
+  &__title {
+    font-family: "Noto Serif JP", serif;
+  }
+  &__image {
+    border-radius: 100%;
+  }
+  &__content {
+    font-family: "Noto Serif JP", serif;
+  }
 }

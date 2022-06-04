@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MeigenCardComponent } from './parts/meigen-card/meigen-card.component';
+import { FooterComponent } from './parts/footer/footer.component';
+import { CategoryTypePipe } from './pipe/category-type.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { MeigenCardComponent } from './parts/meigen-card/meigen-card.component';
     InputSizeComponent,
     HeaderComponent,
     MeigenCardComponent,
+    FooterComponent,
+    CategoryTypePipe,
   ],
   imports: [
     BrowserModule,

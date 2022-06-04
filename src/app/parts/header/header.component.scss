@@ -1,5 +1,11 @@
 .header {
+  background: linear-gradient(-70deg, #28d17e 0%, #2685f3 100%);
   &__title {
     margin: 0 auto;
+    font-family: "Noto Serif JP", serif;
   }
+}
+
+.mat-toolbar {
+  font-family: inherit;
 }

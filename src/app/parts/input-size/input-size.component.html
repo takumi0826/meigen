@@ -1,5 +1,5 @@
 <mat-form-field appearance="outline">
-  <mat-label>名言</mat-label>
+  <mat-label>人物を入力</mat-label>
   <input
     matInput
     placeholder="例）イチロー"
@@ -8,6 +8,6 @@
     (keyup.enter)="onEnter()"
   />
   <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  <mat-hint>人物を入力</mat-hint>
+  <!-- <mat-hint>人物を入力</mat-hint> -->
   <mat-error *ngIf="sizeFormControl.hasError('required')">入力してね</mat-error>
 </mat-form-field>

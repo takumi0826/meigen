@@ -8,10 +8,29 @@
     <!-- <div class="size__buttonWrap">
       <button mat-raised-button color="primary">検索</button>
     </div> -->
+    <div class="categorys">
+      <mat-chip-list aria-label="categorys selection">
+        <mat-chip
+          *ngFor="let category of categorys"
+          class="example-box"
+          color="primary"
+          [selected]="category === selectedCategory"
+          (click)="onSelect(category)"
+        >
+          {{ category }}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
   </div>
-  <div class="card-area">
+  <div class="card-area" *ngIf="(itemList$ | async)?.length; else notItemList">
     <div class="" *ngFor="let item of itemList$ | async">
       <app-meigen-card [item]="item"></app-meigen-card>
     </div>
   </div>
+  <ng-template #notItemList>
+    <div class="not-found">
+      <mat-icon>sentiment_very_dissatisfied</mat-icon>
+      <p>ごめんね。見つからなかった</p>
+    </div>
+  </ng-template>
 </main>

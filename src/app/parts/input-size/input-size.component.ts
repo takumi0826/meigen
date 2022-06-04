@@ -21,13 +21,12 @@ export class InputSizeComponent implements OnInit {
   }
 
   onBlur() {
-    if (this.isVaildate()) return;
+    // if (this.isVaildate()) return;
     this.blur.emit(this.hiraganaToKatakana(this.sizeFormControl.value));
   }
 
   onEnter() {
     this.enter.emit(this.hiraganaToKatakana(this.sizeFormControl.value));
-    this.sizeFormControl.reset();
   }
 
   private hiraganaToKatakana(str: string) {
