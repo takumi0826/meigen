@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { InputSizeComponent } from 'src/app/parts/input-size/input-size.component';
 import { TopService } from 'src/app/services/top.service';
 import { Item } from 'src/app/types/type';
 import { CategoryTypeConst } from '../../constants/category-type-const';
@@ -10,16 +11,21 @@ import { CategoryTypeConst } from '../../constants/category-type-const';
 })
 export class TopComponent implements OnInit {
   panelOpenState = false;
-  itemList = new BehaviorSubject<Item[]>(this.topService.getItemData(''));
+  initData!: Item[];
+  itemList = new BehaviorSubject<Item[]>([]);
   get itemList$() {
     return this.itemList.asObservable();
   }
   categorys!: string[];
   selectedCategory: string = '';
 
+  @ContentChild(InputSizeComponent) inputComponent!: InputSizeComponent;
+
   constructor(private topService: TopService) {}
 
   ngOnInit(): void {
+    this.initData = this.topService.getItemData('');
+    this.itemList.next(this.initData);
     this.categorys = Object.values(CategoryTypeConst);
   }
 
@@ -29,7 +35,12 @@ export class TopComponent implements OnInit {
   }
 
   onSelect(selected: string) {
-    if (selected === this.selectedCategory) return;
+    this.topService.selectSubject$.next();
+    if (selected === this.selectedCategory) {
+      this.selectedCategory = '';
+      this.itemList.next(this.initData);
+      return;
+    }
     this.selectedCategory = selected;
     const itemData = this.topService
       .getItemData('')

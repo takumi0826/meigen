@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { itemData, itemImage } from '../data/item';
 import { Item } from '../types/type';
 
@@ -6,6 +8,10 @@ import { Item } from '../types/type';
   providedIn: 'root',
 })
 export class TopService {
+  private selectSubject = new Subject();
+  get selectSubject$() {
+    return this.selectSubject;
+  }
   constructor() {}
 
   public getItemData(value: string) {
