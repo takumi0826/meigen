@@ -23,14 +23,16 @@
 }
 
 .card-area {
-  margin-top: 80px;
+  margin: 80px auto 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  max-width: 1040px;
+
   @media screen and (max-width: 640px) {
     margin-top: 60px;
     grid-template-columns: 1fr;
   }
-  gap: 16px;
 }
 
 .not-found {

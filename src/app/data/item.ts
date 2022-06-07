@@ -1,4 +1,7 @@
-import { CategoryTypeConst } from '../constants/category-type-const';
+import {
+  CategoryParentConst,
+  CategoryTypeConst,
+} from '../constants/category-type-const';
 import { Item } from '../types/type';
 
 export const itemImage = [
@@ -19,50 +22,80 @@ export const itemData: Item[] = [
   {
     meigen: '濱家体毛薄そうなのに足の毛バリ濃くて草',
     name: '匿名',
-    category: [CategoryTypeConst.ANONYMOUS],
+    category: {
+      parent: CategoryParentConst.ANONYMOUS,
+      child: [CategoryTypeConst.ANONYMOUS.default],
+    },
   },
   {
     meigen:
       '結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる。',
     name: 'イチロー',
-    category: [CategoryTypeConst.BASEBALL],
+    category: {
+      parent: CategoryParentConst.ATHLETE,
+      child: [CategoryTypeConst.ATHLETE.baseball],
+    },
   },
   {
     meigen:
       '壁というのは、できる人にしかやってこない。超えられる可能性がある人にしかやってこない。だから、壁がある時はチャンスだと思っている。',
     name: 'イチロー',
-    category: [CategoryTypeConst.BASEBALL],
+    category: {
+      parent: CategoryParentConst.ATHLETE,
+      child: [CategoryTypeConst.ATHLETE.baseball],
+    },
   },
   {
     meigen:
       '特別なことをするために特別なことをするのではない、特別なことをするために普段どおりの当たり前のことをする。',
     name: 'イチロー',
-    category: [CategoryTypeConst.BASEBALL],
+    category: {
+      parent: CategoryParentConst.ATHLETE,
+      child: [CategoryTypeConst.ATHLETE.baseball],
+    },
   },
   {
     meigen: '人はそれぞれ事情をかかえ、平然と生きている',
     name: '伊集院静',
-    category: [CategoryTypeConst.WRITER, CategoryTypeConst.LYRICIST],
+    category: {
+      parent: CategoryParentConst.CREATER,
+      child: [
+        CategoryTypeConst.CREATER.writer,
+        CategoryTypeConst.CREATER.lyricist,
+      ],
+    },
   },
   {
     meigen:
       '努力は必ず報われる。もし報われない努力があるのならば、それはまだ努力と呼べない',
     name: '王貞治',
-    category: [CategoryTypeConst.BASEBALL],
+    category: {
+      parent: CategoryParentConst.ATHLETE,
+      child: [CategoryTypeConst.ATHLETE.baseball],
+    },
   },
   {
     meigen: '世の中ってオレより頭のいい人のほうが多いんだ',
     name: '高田純次',
-    category: [CategoryTypeConst.COMEDIAN],
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
   },
   {
     meigen: 'いつか、必ず、チャンスの順番が来ると信じなさい',
     name: '秋元康',
-    category: [CategoryTypeConst.LYRICIST],
+    category: {
+      parent: CategoryParentConst.CREATER,
+      child: [CategoryTypeConst.CREATER.lyricist],
+    },
   },
   {
     meigen: '自分を少し抑えて、肩の力を抜けば、仕事は長続きする',
     name: '関根勤',
-    category: [CategoryTypeConst.COMEDIAN],
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
   },
 ];

@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MeigenCardComponent } from './parts/meigen-card/meigen-card.component';
 import { FooterComponent } from './parts/footer/footer.component';
 import { CategoryTypePipe } from './pipe/category-type.pipe';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CategoryTypePipe } from './pipe/category-type.pipe';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxGoogleAnalyticsModule.forRoot('traking-code'),
   ],
   providers: [],
   bootstrap: [AppComponent],

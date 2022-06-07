@@ -2,8 +2,11 @@ import { Component, ContentChild, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { InputSizeComponent } from 'src/app/parts/input-size/input-size.component';
 import { TopService } from 'src/app/services/top.service';
-import { Item } from 'src/app/types/type';
-import { CategoryTypeConst } from '../../constants/category-type-const';
+import { Category, CategoryType, Item } from 'src/app/types/type';
+import {
+  CategoryParentConst,
+  CategoryTypeConst,
+} from '../../constants/category-type-const';
 @Component({
   selector: 'app-top',
   templateUrl: './top.component.html',
@@ -19,14 +22,12 @@ export class TopComponent implements OnInit {
   categorys!: string[];
   selectedCategory: string = '';
 
-  @ContentChild(InputSizeComponent) inputComponent!: InputSizeComponent;
-
   constructor(private topService: TopService) {}
 
   ngOnInit(): void {
     this.initData = this.topService.getItemData('');
     this.itemList.next(this.initData);
-    this.categorys = Object.values(CategoryTypeConst);
+    this.categorys = Object.values(CategoryParentConst);
   }
 
   onSearch(value: string) {
@@ -44,7 +45,7 @@ export class TopComponent implements OnInit {
     this.selectedCategory = selected;
     const itemData = this.topService
       .getItemData('')
-      .filter((item) => item.category.includes(selected));
+      .filter((item) => item.category.parent === selected);
     this.itemList.next(itemData);
   }
 }

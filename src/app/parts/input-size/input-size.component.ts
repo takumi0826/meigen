@@ -50,7 +50,7 @@ export class InputSizeComponent implements OnInit, OnDestroy {
   }
 
   private hiraganaToKatakana(str: string) {
-    if (!this.isHiragana(str)) return str;
+    if (!this.isHiragana(str)) return str || '';
     return str.replace(/[\u3041-\u3096]/g, (match) => {
       var chr = match.charCodeAt(0) + 0x60;
       return String.fromCharCode(chr);
@@ -58,6 +58,6 @@ export class InputSizeComponent implements OnInit, OnDestroy {
   }
 
   private isHiragana(str: string) {
-    return str.match(/^[ぁ-んー　]*$/);
+    return str?.match(/^[ぁ-んー　]*$/);
   }
 }
