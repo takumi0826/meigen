@@ -33,7 +33,7 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxGoogleAnalyticsModule.forRoot('traking-code'),
+    NgxGoogleAnalyticsModule.forRoot('G-0SF9YG7HWB'),
   ],
   providers: [],
   bootstrap: [AppComponent],
