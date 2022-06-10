@@ -4,6 +4,7 @@
   }
   &__image {
     border-radius: 100%;
+    object-fit: cover;
   }
   &__content {
     font-family: "Noto Serif JP", serif;
