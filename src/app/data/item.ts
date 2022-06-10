@@ -28,17 +28,27 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen:
-      '結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる。',
-    name: 'イチロー',
+    meigen: 'いつか、必ず、チャンスの順番が来ると信じなさい',
+    name: '秋元康',
     category: {
-      parent: CategoryParentConst.ATHLETE,
-      child: [CategoryTypeConst.ATHLETE.baseball],
+      parent: CategoryParentConst.CREATER,
+      child: [CategoryTypeConst.CREATER.lyricist],
+    },
+  },
+  {
+    meigen: '人はそれぞれ事情をかかえ、平然と生きている',
+    name: '伊集院静',
+    category: {
+      parent: CategoryParentConst.CREATER,
+      child: [
+        CategoryTypeConst.CREATER.writer,
+        CategoryTypeConst.CREATER.lyricist,
+      ],
     },
   },
   {
     meigen:
-      '壁というのは、できる人にしかやってこない。超えられる可能性がある人にしかやってこない。だから、壁がある時はチャンスだと思っている。',
+      '結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる。',
     name: 'イチロー',
     category: {
       parent: CategoryParentConst.ATHLETE,
@@ -55,17 +65,6 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen: '人はそれぞれ事情をかかえ、平然と生きている',
-    name: '伊集院静',
-    category: {
-      parent: CategoryParentConst.CREATER,
-      child: [
-        CategoryTypeConst.CREATER.writer,
-        CategoryTypeConst.CREATER.lyricist,
-      ],
-    },
-  },
-  {
     meigen:
       '努力は必ず報われる。もし報われない努力があるのならば、それはまだ努力と呼べない',
     name: '王貞治',
@@ -75,19 +74,11 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen: '世の中ってオレより頭のいい人のほうが多いんだ',
+    meigen: '俺は寝ている時は、真面目だよ',
     name: '高田純次',
     category: {
       parent: CategoryParentConst.COMEDIAN,
       child: [CategoryTypeConst.COMEDIAN.default],
-    },
-  },
-  {
-    meigen: 'いつか、必ず、チャンスの順番が来ると信じなさい',
-    name: '秋元康',
-    category: {
-      parent: CategoryParentConst.CREATER,
-      child: [CategoryTypeConst.CREATER.lyricist],
     },
   },
   {
@@ -96,6 +87,115 @@ export const itemData: Item[] = [
     category: {
       parent: CategoryParentConst.COMEDIAN,
       child: [CategoryTypeConst.COMEDIAN.default],
+    },
+  },
+  {
+    meigen: '生きてるだけで丸儲け',
+    name: '明石家さんま',
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
+  },
+  {
+    meigen:
+      '努力ってのは宝くじみたいなものだよ。買っても当たるかどうかはわからないけど、買わなきゃ当たらない',
+    name: 'ビートたけし',
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
+  },
+  {
+    meigen: '下積みはつらくなかった。だって好きなことだから。',
+    name: '石橋貴明',
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
+  },
+  {
+    meigen: '痛いのはもう撮れてるからw',
+    name: '木梨憲武',
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
+  },
+  {
+    meigen: '明日死ぬとしても笑うわ',
+    name: '松本人志',
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
+  },
+  {
+    meigen: '俺はこの先お笑い一本で考えていない。相方が偉大すぎて',
+    name: '浜田雅功',
+    category: {
+      parent: CategoryParentConst.COMEDIAN,
+      child: [CategoryTypeConst.COMEDIAN.default],
+    },
+  },
+  {
+    meigen:
+      '道草を楽しめ 大いにな\nほしいものより大切なものがきっとそっちにころがってる',
+    name: 'ジン・フリークス',
+    category: {
+      parent: CategoryParentConst.ANIME,
+      child: [CategoryTypeConst.ANIME.default],
+    },
+  },
+  {
+    meigen: 'そんな目でみつめるなよ。興奮しちゃうじゃないか。',
+    name: 'ヒソカ',
+    category: {
+      parent: CategoryParentConst.ANIME,
+      child: [CategoryTypeConst.ANIME.default],
+    },
+  },
+  {
+    meigen: 'まっすぐ自分の言葉は曲げねぇ。それがオレの忍道だ',
+    name: 'ナルト',
+    category: {
+      parent: CategoryParentConst.ANIME,
+      child: [CategoryTypeConst.ANIME.default],
+    },
+  },
+  {
+    meigen: '大切なのはあきらめねェど根性だ',
+    name: '自来也',
+    category: {
+      parent: CategoryParentConst.ANIME,
+      child: [CategoryTypeConst.ANIME.default],
+    },
+  },
+  {
+    meigen:
+      'せめて自分ぐらい自分を褒めて認めてあげないと自分が救われない。自分の味方になれるのは自分だけ。',
+    name: '美輪明宏',
+    category: {
+      parent: CategoryParentConst.ENTERTAINER,
+      child: [CategoryTypeConst.ENTERTAINER.default],
+    },
+  },
+  {
+    meigen:
+      '誰にでもチャンスは訪れているはず。これがチャンスだって思うか思わないか。',
+    name: 'デヴィ夫人',
+    category: {
+      parent: CategoryParentConst.ENTERTAINER,
+      child: [CategoryTypeConst.ENTERTAINER.default],
+    },
+  },
+  {
+    meigen:
+      'あんまり若いうちからしっかりしすぎちゃダメよ。嫌なときは仕事バックれちゃったりとかしていいのよ。',
+    name: 'マツコ・デラックス',
+    category: {
+      parent: CategoryParentConst.ENTERTAINER,
+      child: [CategoryTypeConst.ENTERTAINER.default],
     },
   },
 ];
