@@ -115,7 +115,7 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen: '痛いのはもう撮れてるからw',
+    meigen: '嫌がるのはもう撮れてるからw',
     name: '木梨憲武',
     category: {
       parent: CategoryParentConst.COMEDIAN,
@@ -138,39 +138,39 @@ export const itemData: Item[] = [
       child: [CategoryTypeConst.COMEDIAN.default],
     },
   },
-  {
-    meigen:
-      '道草を楽しめ 大いにな\nほしいものより大切なものがきっとそっちにころがってる',
-    name: 'ジン・フリークス',
-    category: {
-      parent: CategoryParentConst.ANIME,
-      child: [CategoryTypeConst.ANIME.default],
-    },
-  },
-  {
-    meigen: 'そんな目でみつめるなよ。興奮しちゃうじゃないか。',
-    name: 'ヒソカ',
-    category: {
-      parent: CategoryParentConst.ANIME,
-      child: [CategoryTypeConst.ANIME.default],
-    },
-  },
-  {
-    meigen: 'まっすぐ自分の言葉は曲げねぇ。それがオレの忍道だ',
-    name: 'ナルト',
-    category: {
-      parent: CategoryParentConst.ANIME,
-      child: [CategoryTypeConst.ANIME.default],
-    },
-  },
-  {
-    meigen: '大切なのはあきらめねェど根性だ',
-    name: '自来也',
-    category: {
-      parent: CategoryParentConst.ANIME,
-      child: [CategoryTypeConst.ANIME.default],
-    },
-  },
+  // {
+  //   meigen:
+  //     '道草を楽しめ 大いにな\nほしいものより大切なものがきっとそっちにころがってる',
+  //   name: 'ジン・フリークス',
+  //   category: {
+  //     parent: CategoryParentConst.ANIME,
+  //     child: [CategoryTypeConst.ANIME.default],
+  //   },
+  // },
+  // {
+  //   meigen: 'そんな目でみつめるなよ。興奮しちゃうじゃないか。',
+  //   name: 'ヒソカ',
+  //   category: {
+  //     parent: CategoryParentConst.ANIME,
+  //     child: [CategoryTypeConst.ANIME.default],
+  //   },
+  // },
+  // {
+  //   meigen: 'まっすぐ自分の言葉は曲げねぇ。それがオレの忍道だ',
+  //   name: 'ナルト',
+  //   category: {
+  //     parent: CategoryParentConst.ANIME,
+  //     child: [CategoryTypeConst.ANIME.default],
+  //   },
+  // },
+  // {
+  //   meigen: '大切なのはあきらめねェど根性だ',
+  //   name: '自来也',
+  //   category: {
+  //     parent: CategoryParentConst.ANIME,
+  //     child: [CategoryTypeConst.ANIME.default],
+  //   },
+  // },
   {
     meigen:
       'せめて自分ぐらい自分を褒めて認めてあげないと自分が救われない。自分の味方になれるのは自分だけ。',

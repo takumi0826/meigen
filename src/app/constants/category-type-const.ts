@@ -5,7 +5,7 @@ export const CategoryParentConst: CategoryParent = {
   ATHLETE: 'アスリート',
   COMEDIAN: '芸人・タレント',
   CREATER: 'クリエイター',
-  ANIME: 'アニメ･漫画',
+  // ANIME: 'アニメ･漫画',
   ANONYMOUS: '匿名のレジェンド',
 } as const;
 
@@ -24,6 +24,6 @@ export const CategoryTypeConst: CategoryType = {
     writer: '作家',
     manga: '漫画家',
   },
-  ANIME: { default: CategoryParentConst.ANIME },
+  // ANIME: { default: CategoryParentConst.ANIME },
   ANONYMOUS: { default: CategoryParentConst.ANONYMOUS },
 } as const;
