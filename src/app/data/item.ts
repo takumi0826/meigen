@@ -28,6 +28,47 @@ export const itemData: Item[] = [
     },
   },
   {
+    meigen: '最高の贅沢は最悪の貧困',
+    name: '匿名',
+    category: {
+      parent: CategoryParentConst.ANONYMOUS,
+      child: [CategoryTypeConst.ANONYMOUS.default],
+    },
+  },
+  {
+    meigen:
+      'ユーザー6500万人って凄すぎるな アメリカの人口をざっと3億2000万人だと仮定して6500万人がプレイしている計算になる',
+    name: '匿名',
+    category: {
+      parent: CategoryParentConst.ANONYMOUS,
+      child: [CategoryTypeConst.ANONYMOUS.default],
+    },
+  },
+  {
+    meigen: '平日の昼間に酒飲みながら見る冷えたビールは最高ンゴねぇ',
+    name: '匿名',
+    category: {
+      parent: CategoryParentConst.ANONYMOUS,
+      child: [CategoryTypeConst.ANONYMOUS.default],
+    },
+  },
+  {
+    meigen: 'なんか毎年雨降る時期あるよな',
+    name: '匿名',
+    category: {
+      parent: CategoryParentConst.ANONYMOUS,
+      child: [CategoryTypeConst.ANONYMOUS.default],
+    },
+  },
+  {
+    meigen: '猫の前歯の本数を確認することもなく日々は続く。',
+    name: '匿名',
+    category: {
+      parent: CategoryParentConst.ANONYMOUS,
+      child: [CategoryTypeConst.ANONYMOUS.default],
+    },
+  },
+  {
     meigen: 'いつか、必ず、チャンスの順番が来ると信じなさい',
     name: '秋元康',
     category: {
@@ -47,8 +88,24 @@ export const itemData: Item[] = [
     },
   },
   {
+    meigen: '人を信じよ、しかし、その百倍も自らを信じよ',
+    name: '手塚治虫',
+    category: {
+      parent: CategoryParentConst.CREATER,
+      child: [CategoryTypeConst.CREATER.manga],
+    },
+  },
+  {
+    meigen: 'しないではいられないことを、 し続けなさい',
+    name: '水木しげる',
+    category: {
+      parent: CategoryParentConst.CREATER,
+      child: [CategoryTypeConst.CREATER.manga],
+    },
+  },
+  {
     meigen:
-      '結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる。',
+      '結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる',
     name: 'イチロー',
     category: {
       parent: CategoryParentConst.ATHLETE,
@@ -57,7 +114,7 @@ export const itemData: Item[] = [
   },
   {
     meigen:
-      '特別なことをするために特別なことをするのではない、特別なことをするために普段どおりの当たり前のことをする。',
+      '特別なことをするために特別なことをするのではない、特別なことをするために普段どおりの当たり前のことをする',
     name: 'イチロー',
     category: {
       parent: CategoryParentConst.ATHLETE,
@@ -82,7 +139,7 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen: '勝ち負けなんかちっぽけなこと。大事なことは本気だったかどうかだ。',
+    meigen: '勝ち負けなんかちっぽけなこと。大事なことは本気だったかどうかだ',
     name: '松岡修造',
     category: {
       parent: CategoryParentConst.ATHLETE,
@@ -90,7 +147,7 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen: '自己犠牲を厭わない人には、信頼が集まる。',
+    meigen: '自己犠牲を厭わない人には、信頼が集まる',
     name: '野村克也',
     category: {
       parent: CategoryParentConst.ATHLETE,
@@ -131,7 +188,7 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen: '下積みはつらくなかった。だって好きなことだから。',
+    meigen: '下積みはつらくなかった。だって好きなことだから',
     name: '石橋貴明',
     category: {
       parent: CategoryParentConst.COMEDIAN,
@@ -172,7 +229,7 @@ export const itemData: Item[] = [
   //   },
   // },
   // {
-  //   meigen: 'そんな目でみつめるなよ。興奮しちゃうじゃないか。',
+  //   meigen: 'そんな目でみつめるなよ。興奮しちゃうじゃないか',
   //   name: 'ヒソカ',
   //   category: {
   //     parent: CategoryParentConst.ANIME,
@@ -197,7 +254,7 @@ export const itemData: Item[] = [
   // },
   {
     meigen:
-      'せめて自分ぐらい自分を褒めて認めてあげないと自分が救われない。自分の味方になれるのは自分だけ。',
+      'せめて自分ぐらい自分を褒めて認めてあげないと自分が救われない。自分の味方になれるのは自分だけ',
     name: '美輪明宏',
     category: {
       parent: CategoryParentConst.ENTERTAINER,
@@ -206,7 +263,7 @@ export const itemData: Item[] = [
   },
   {
     meigen:
-      '誰にでもチャンスは訪れているはず。これがチャンスだって思うか思わないか。',
+      '誰にでもチャンスは訪れているはず。これがチャンスだって思うか思わないか',
     name: 'デヴィ夫人',
     category: {
       parent: CategoryParentConst.ENTERTAINER,
@@ -215,7 +272,7 @@ export const itemData: Item[] = [
   },
   {
     meigen:
-      'あんまり若いうちからしっかりしすぎちゃダメよ。嫌なときは仕事バックれちゃったりとかしていいのよ。',
+      'あんまり若いうちからしっかりしすぎちゃダメよ。嫌なときは仕事バックれちゃったりとかしていいのよ',
     name: 'マツコ・デラックス',
     category: {
       parent: CategoryParentConst.ENTERTAINER,
@@ -224,7 +281,7 @@ export const itemData: Item[] = [
   },
   {
     meigen:
-      '昔の映画や昔の役者さんの映画を見返すように、自分がなくなったあともそんな映画に一本でも関われたらと思っている。',
+      '昔の映画や昔の役者さんの映画を見返すように、自分がなくなったあともそんな映画に一本でも関われたらと思っている',
     name: '役所広司',
     category: {
       parent: CategoryParentConst.ENTERTAINER,
@@ -232,7 +289,7 @@ export const itemData: Item[] = [
     },
   },
   {
-    meigen: 'おごらず、人と比べず、面白がって平気に生きればいい。',
+    meigen: 'おごらず、人と比べず、面白がって平気に生きればいい',
     name: '樹木希林',
     category: {
       parent: CategoryParentConst.ENTERTAINER,

@@ -31,6 +31,7 @@ export class TopComponent implements OnInit {
   }
 
   onSearch(value: string) {
+    this.selectedCategory = '';
     const itemData = this.topService.getItemData(value);
     this.itemList.next(itemData);
   }
