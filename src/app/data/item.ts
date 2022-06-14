@@ -74,6 +74,30 @@ export const itemData: Item[] = [
     },
   },
   {
+    meigen: '結果にこだわるな、成功にこだわるな、成長にこだわれ',
+    name: '本田圭佑',
+    category: {
+      parent: CategoryParentConst.ATHLETE,
+      child: [CategoryTypeConst.ATHLETE.soccer],
+    },
+  },
+  {
+    meigen: '勝ち負けなんかちっぽけなこと。大事なことは本気だったかどうかだ。',
+    name: '松岡修造',
+    category: {
+      parent: CategoryParentConst.ATHLETE,
+      child: [CategoryTypeConst.ATHLETE.tennis],
+    },
+  },
+  {
+    meigen: '自己犠牲を厭わない人には、信頼が集まる。',
+    name: '野村克也',
+    category: {
+      parent: CategoryParentConst.ATHLETE,
+      child: [CategoryTypeConst.ATHLETE.baseball],
+    },
+  },
+  {
     meigen: '俺は寝ている時は、真面目だよ',
     name: '高田純次',
     category: {
@@ -196,6 +220,31 @@ export const itemData: Item[] = [
     category: {
       parent: CategoryParentConst.ENTERTAINER,
       child: [CategoryTypeConst.ENTERTAINER.default],
+    },
+  },
+  {
+    meigen:
+      '昔の映画や昔の役者さんの映画を見返すように、自分がなくなったあともそんな映画に一本でも関われたらと思っている。',
+    name: '役所広司',
+    category: {
+      parent: CategoryParentConst.ENTERTAINER,
+      child: [CategoryTypeConst.ENTERTAINER.singer],
+    },
+  },
+  {
+    meigen: 'おごらず、人と比べず、面白がって平気に生きればいい。',
+    name: '樹木希林',
+    category: {
+      parent: CategoryParentConst.ENTERTAINER,
+      child: [CategoryTypeConst.ENTERTAINER.singer],
+    },
+  },
+  {
+    meigen: '人生というのは、失うものを増やしていくゲームなんだ',
+    name: '矢沢永吉',
+    category: {
+      parent: CategoryParentConst.ENTERTAINER,
+      child: [CategoryTypeConst.ENTERTAINER.singer],
     },
   },
 ];
