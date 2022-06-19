@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { MaterialModule } from './material/material.module';
 import { TopComponent } from './page/top/top.component';
-import { InputSizeComponent } from './parts/input-size/input-size.component';
+import { InputNameComponent } from './parts/input-name/input-name.component';
 import { HeaderComponent } from './parts/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
   declarations: [
     AppComponent,
     TopComponent,
-    InputSizeComponent,
+    InputNameComponent,
     HeaderComponent,
     MeigenCardComponent,
     FooterComponent,

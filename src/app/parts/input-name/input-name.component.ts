@@ -11,11 +11,11 @@ import { takeUntil } from 'rxjs/operators';
 import { TopService } from 'src/app/services/top.service';
 
 @Component({
-  selector: 'app-input-size',
-  templateUrl: './input-size.component.html',
-  styleUrls: ['./input-size.component.scss'],
+  selector: 'app-input-name',
+  templateUrl: './input-name.component.html',
+  styleUrls: ['./input-name.component.scss'],
 })
-export class InputSizeComponent implements OnInit, OnDestroy {
+export class InputNameComponent implements OnInit, OnDestroy {
   formControl = new FormControl('', [Validators.required]);
   @Output() blur = new EventEmitter<string>();
   @Output() enter = new EventEmitter<string>();

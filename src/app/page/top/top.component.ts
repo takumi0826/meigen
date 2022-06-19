@@ -1,6 +1,6 @@
 import { Component, ContentChild, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { InputSizeComponent } from 'src/app/parts/input-size/input-size.component';
+import { InputNameComponent } from 'src/app/parts/input-name/input-name.component';
 import { TopService } from 'src/app/services/top.service';
 import { Category, CategoryType, Item } from 'src/app/types/type';
 import {
