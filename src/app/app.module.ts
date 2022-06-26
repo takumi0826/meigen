@@ -15,6 +15,8 @@ import { MeigenCardComponent } from './parts/meigen-card/meigen-card.component';
 import { FooterComponent } from './parts/footer/footer.component';
 import { CategoryTypePipe } from './pipe/category-type.pipe';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { ScrollTopComponent } from './parts/scroll-top/scroll-top.component';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
     MeigenCardComponent,
     FooterComponent,
     CategoryTypePipe,
+    ScrollTopComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxScrollTopModule,
     NgxGoogleAnalyticsModule.forRoot('G-0SF9YG7HWB'),
   ],
   providers: [],
