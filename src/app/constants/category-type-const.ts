@@ -6,7 +6,7 @@ export const CategoryParentConst: CategoryParent = {
   COMEDIAN: '芸人・タレント',
   CREATER: 'クリエイター',
   // ANIME: 'アニメ･漫画',
-  ANONYMOUS: '匿名のレジェンド',
+  ANONYMOUS: '匿名',
 } as const;
 
 export const CategoryTypeConst: CategoryType = {
