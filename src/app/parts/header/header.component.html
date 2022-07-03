@@ -1,17 +1,20 @@
 <mat-toolbar color="primary" class="header">
   <!-- <button
-    mat-icon-button
-    class="header__button"
-    aria-label="header icon-button with menu icon"
-  >
-    <mat-icon class="header__icon">menu</mat-icon>
-  </button> -->
+      mat-icon-button
+      class="header__button"
+      aria-label="header icon-button with menu icon"
+    >
+      <mat-icon class="header__icon">menu</mat-icon>
+    </button> -->
   <h1 class="header__title">レジェンドたちの名言</h1>
-  <!-- <button
+  <button
     mat-icon-button
-    class="header__button"
+    class="header__button header__button--rigit"
     aria-label="header icon-button with share icon"
+    (click)="changeMode()"
   >
-    <mat-icon class="header__icon">share</mat-icon>
-  </button> -->
+    <mat-icon class="header__icon">{{
+      (isDark$ | async) ? "light_mode" : "dark_mode"
+    }}</mat-icon>
+  </button>
 </mat-toolbar>

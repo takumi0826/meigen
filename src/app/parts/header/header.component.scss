@@ -1,8 +1,18 @@
 .header {
-  background: linear-gradient(-70deg, #28d17e 0%, #2685f3 100%);
+  background: var(--header-gradient);
   &__title {
     margin: 0 auto;
     font-family: "Noto Serif JP", serif;
+  }
+
+  &__button {
+    &--rigit {
+      position: absolute;
+      right: 16px;
+    }
+  }
+
+  &__icon {
   }
 }
 

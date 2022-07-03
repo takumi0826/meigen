@@ -5,12 +5,12 @@ import {
 import { Item } from '../types/type';
 
 export const itemImage = [
-  'cat-3508695_640.jpg',
-  'dog-3508706_640.jpg',
-  'eagle-3508696_640.jpg',
-  'lion-5199769_640.jpg',
-  'tiger-3515349_640.jpg',
-  'bear-3508700_640.jpg',
+  'cat-3508695_640.png',
+  'dog-3508706_640.png',
+  'eagle-3508696_640.png',
+  'lion-5199769_640.png',
+  'tiger-3515349_640.png',
+  'bear-3508700_640.png',
 ];
 
 export const itemData: Item[] = [

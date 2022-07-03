@@ -1,0 +1,14 @@
+body {
+  background-color: var(--base-background);
+  color: var(--base-color);
+}
+
+.gradient-text {
+  background: linear-gradient(-70deg, #64acff 0%, #a2facf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background: var(--card-gradient);
+}

@@ -33,4 +33,10 @@ export class TopService {
     }
     return array;
   }
+
+  // private changeHours(): boolean {
+  //   const hours = new Date().getHours();
+  //   const target = [0, 6, 12, 18];
+  //   return target.some((h) => h === hours);
+  // }
 }

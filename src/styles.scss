@@ -1,5 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~normalize.css";
+
+:root {
+  --base-color: #191919;
+  --sub-color: #484646;
+  --base-background: white;
+  --base-outline: 0, 0, 0, 0.12;
+  --base-placeholder: 0, 0, 0, 0.4;
+  --card-gradient: linear-gradient(-70deg, #a2facf 0%, #64acff 100%);
+  --header-gradient: linear-gradient(-70deg, #28d17e 0%, #2685f3 100%);
+}
+
+:root.dark {
+  --base-color: #bdc1c6;
+  --sub-color: #a1a4a8;
+  --base-background: #202124;
+  --base-outline: 255, 255, 255, 0.12;
+  --base-placeholder: 255, 255, 255, 0.4;
+  --card-gradient: linear-gradient(
+    145deg,
+    rgba(64, 58, 58, 1) 0%,
+    rgba(49, 49, 55, 1) 100%
+  );
+  --header-gradient: linear-gradient(
+    145deg,
+    rgba(64, 58, 58, 1) 0%,
+    rgba(49, 49, 55, 1) 100%
+  );
+}
+
 html,
 body {
   height: 100%;
@@ -8,16 +37,21 @@ body {
   margin: 0;
 }
 
-.gradient-text {
-  background: linear-gradient(-70deg, #64acff 0%, #a2facf 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-bg {
-  background: linear-gradient(-70deg, #a2facf 0%, #64acff 100%);
-}
-
 .mat-typography {
   font: 400 16px Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgba(var(--base-outline));
+}
+.mat-input-element::placeholder {
+  color: rgba(var(--base-placeholder));
+}
+.mat-form-field .mat-form-field-label {
+  color: rgba(var(--base-placeholder));
+}
+.mat-card {
+  color: var(--base-color);
+}
+.mat-card-subtitle {
+  color: var(--sub-color);
 }
