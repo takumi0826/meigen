@@ -17,7 +17,6 @@ import { CategoryTypePipe } from './pipe/category-type.pipe';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { ScrollTopComponent } from './parts/scroll-top/scroll-top.component';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     NgxScrollTopModule,
-    HttpClientModule,
     NgxGoogleAnalyticsModule.forRoot('G-0SF9YG7HWB'),
   ],
   providers: [],

@@ -1,6 +1,5 @@
 import { Component, ContentChild, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import { InputNameComponent } from 'src/app/parts/input-name/input-name.component';
 import { TopService } from 'src/app/services/top.service';
 import { Category, CategoryType, Item } from 'src/app/types/type';
@@ -20,13 +19,7 @@ export class TopComponent implements OnInit {
   get itemList$() {
     return this.itemList.asObservable();
   }
-  category$ = this.topService.category$.pipe(
-    filter((c) => !!c.length),
-    map((c) => {
-      console.log(c[0]);
-      return c.map((v) => v.name);
-    })
-  );
+  categorys!: string[];
   selectedCategory: string = '';
 
   constructor(private topService: TopService) {}
@@ -34,6 +27,7 @@ export class TopComponent implements OnInit {
   ngOnInit(): void {
     this.initData = this.topService.getItemData('');
     this.itemList.next(this.initData);
+    this.categorys = Object.values(CategoryParentConst);
   }
 
   onSearch(value: string) {

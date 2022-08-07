@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppService } from './services/app.service';
-import { TopService } from './services/top.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +9,12 @@ import { TopService } from './services/top.service';
 })
 export class AppComponent implements OnInit {
   title = 'meigen';
-  constructor(private appService: AppService, private topService: TopService) {}
+  constructor(private appService: AppService) {}
 
   ngOnInit(): void {
     if (matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark');
       this.appService.isDark.next(true);
     }
-
-    this.topService.getCategories();
   }
 }
