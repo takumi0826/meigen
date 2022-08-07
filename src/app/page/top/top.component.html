@@ -11,7 +11,7 @@
     <div class="categorys">
       <mat-chip-list aria-label="categorys selection">
         <mat-chip
-          *ngFor="let category of categorys"
+          *ngFor="let category of category$ | async"
           class="example-box"
           color="primary"
           [selected]="category === selectedCategory"
