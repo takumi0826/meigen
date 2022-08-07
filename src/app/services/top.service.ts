@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { catchError, first } from 'rxjs/operators';
+import { catchError, first, take } from 'rxjs/operators';
 import { itemData, itemImage } from '../data/item';
 import { Category, CategoryResponse, Item, LegendItem } from '../types/type';
 import { AppService } from './app.service';
@@ -11,11 +11,10 @@ import { AppService } from './app.service';
   providedIn: 'root',
 })
 export class TopService {
-  private selectSubject = new Subject();
-  get selectSubject$() {
-    return this.selectSubject;
-  }
   readonly category$ = new BehaviorSubject<CategoryResponse[]>([]);
+  readonly legendItem$ = new BehaviorSubject<LegendItem[]>([]);
+  readonly selectCategory$ = new BehaviorSubject<string>('');
+  readonly searchValue$ = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) {}
 
@@ -32,6 +31,26 @@ export class TopService {
   }
 
   /**
+   * getLegend
+   */
+  public getLegend() {
+    this.http
+      .get<LegendItem[]>('http://localhost:3000/legends/find-all')
+      .pipe(
+        first(),
+        catchError((err) => {
+          throw 'error in source. Details: ' + err;
+        })
+      )
+      .subscribe({
+        next: (v) => {
+          this.legendItem$.next(v);
+        },
+        error: (err) => console.log(err),
+      });
+  }
+
+  /**
    * name
    */
   public async getCategories() {
@@ -45,7 +64,6 @@ export class TopService {
       )
       .subscribe({
         next: (v) => {
-          console.log(v);
           this.category$.next(v);
         },
         error: (err) => console.log(err),

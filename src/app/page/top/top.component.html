@@ -14,7 +14,7 @@
           *ngFor="let category of category$ | async"
           class="example-box"
           color="primary"
-          [selected]="category === selectedCategory"
+          [selected]="(selectCategory$ | async) === category"
           (click)="onSelect(category)"
         >
           {{ category }}

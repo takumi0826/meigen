@@ -19,5 +19,6 @@ export class AppComponent implements OnInit {
     }
 
     this.topService.getCategories();
+    this.topService.getLegend();
   }
 }

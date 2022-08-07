@@ -25,7 +25,7 @@ export class InputNameComponent implements OnInit, OnDestroy {
   constructor(private topService: TopService) {}
 
   ngOnInit(): void {
-    this.topService.selectSubject$
+    this.topService.selectCategory$
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.formControl.reset();

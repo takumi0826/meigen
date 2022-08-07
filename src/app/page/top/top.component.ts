@@ -1,9 +1,21 @@
 import { Component, ContentChild, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  first,
+  last,
+  map,
+  pairwise,
+  startWith,
+  switchMap,
+  take,
+  tap,
+} from 'rxjs/operators';
 import { InputNameComponent } from 'src/app/parts/input-name/input-name.component';
 import { TopService } from 'src/app/services/top.service';
-import { Category, CategoryType, Item } from 'src/app/types/type';
+import { Category, CategoryType, Item, LegendItem } from 'src/app/types/type';
 import {
   CategoryParentConst,
   CategoryTypeConst,
@@ -14,45 +26,52 @@ import {
   styleUrls: ['./top.component.scss'],
 })
 export class TopComponent implements OnInit {
-  panelOpenState = false;
-  initData!: Item[];
-  itemList = new BehaviorSubject<Item[]>([]);
-  get itemList$() {
-    return this.itemList.asObservable();
-  }
   category$ = this.topService.category$.pipe(
     filter((c) => !!c.length),
     map((c) => {
-      console.log(c[0]);
       return c.map((v) => v.name);
     })
   );
-  selectedCategory: string = '';
-
+  selectCategory$ = this.topService.selectCategory$;
+  searchValue$ = this.topService.searchValue$;
+  legendItem$ = this.topService.legendItem$.pipe(
+    filter((item) => !!item.length),
+    take(1)
+  );
+  itemList$ = combineLatest([
+    this.legendItem$,
+    this.selectCategory$,
+    this.searchValue$,
+  ]).pipe(
+    map(([list, category, search]) => {
+      if (search) {
+        return list.filter((v) => v.name.includes(search));
+      }
+      if (category) {
+        return list.filter((v) => {
+          return v.category.some((c) => c.parent.name === category);
+        });
+      }
+      return list;
+    })
+  );
   constructor(private topService: TopService) {}
 
-  ngOnInit(): void {
-    this.initData = this.topService.getItemData('');
-    this.itemList.next(this.initData);
-  }
+  ngOnInit(): void {}
 
   onSearch(value: string) {
-    this.selectedCategory = '';
-    const itemData = this.topService.getItemData(value);
-    this.itemList.next(itemData);
+    if (!value) {
+      this.topService.searchValue$.next('');
+      return;
+    }
+    this.topService.searchValue$.next(value);
   }
 
   onSelect(selected: string) {
-    this.topService.selectSubject$.next();
-    if (selected === this.selectedCategory) {
-      this.selectedCategory = '';
-      this.itemList.next(this.initData);
+    if (selected === this.selectCategory$.getValue()) {
+      this.topService.selectCategory$.next('');
       return;
     }
-    this.selectedCategory = selected;
-    const itemData = this.topService
-      .getItemData('')
-      .filter((item) => item.category.parent === selected);
-    this.itemList.next(itemData);
+    this.topService.selectCategory$.next(selected);
   }
 }
