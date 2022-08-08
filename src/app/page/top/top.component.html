@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="card-area" *ngIf="(itemList$ | async)?.length; else notItemList">
-    <div class="" *ngFor="let item of itemList$ | async">
+    <div class="" *ngFor="let item of itemList$ | async; trackBy: trackCard">
       <app-meigen-card [item]="item"></app-meigen-card>
     </div>
   </div>

@@ -56,4 +56,8 @@ export class TopComponent implements OnInit {
     }
     this.topService.selectCategory$.next(selected);
   }
+
+  trackCard(index: any) {
+    return index;
+  }
 }
