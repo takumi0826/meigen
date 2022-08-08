@@ -1,25 +1,7 @@
-import { Component, ContentChild, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  first,
-  last,
-  map,
-  pairwise,
-  startWith,
-  switchMap,
-  take,
-  tap,
-} from 'rxjs/operators';
-import { InputNameComponent } from 'src/app/parts/input-name/input-name.component';
+import { Component, OnInit } from '@angular/core';
+import { combineLatest } from 'rxjs';
+import { filter, map, take } from 'rxjs/operators';
 import { TopService } from 'src/app/services/top.service';
-import { Category, CategoryType, Item, LegendItem } from 'src/app/types/type';
-import {
-  CategoryParentConst,
-  CategoryTypeConst,
-} from '../../constants/category-type-const';
 @Component({
   selector: 'app-top',
   templateUrl: './top.component.html',

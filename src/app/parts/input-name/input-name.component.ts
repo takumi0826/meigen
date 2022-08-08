@@ -42,11 +42,11 @@ export class InputNameComponent implements OnInit, OnDestroy {
 
   onBlur() {
     // if (this.isVaildate()) return;
-    this.blur.emit(this.hiraganaToKatakana(this.formControl.value));
+    this.blur.emit(this.formControl.value || '');
   }
 
   onEnter() {
-    this.enter.emit(this.hiraganaToKatakana(this.formControl.value));
+    this.enter.emit(this.formControl.value || '');
   }
 
   private hiraganaToKatakana(str: string) {
