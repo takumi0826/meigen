@@ -5,7 +5,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TopService } from 'src/app/services/top.service';
@@ -16,7 +16,7 @@ import { TopService } from 'src/app/services/top.service';
   styleUrls: ['./input-name.component.scss'],
 })
 export class InputNameComponent implements OnInit, OnDestroy {
-  formControl = new FormControl('', [Validators.required]);
+  formControl = new UntypedFormControl('', [Validators.required]);
   @Output() blur = new EventEmitter<string>();
   @Output() enter = new EventEmitter<string>();
 
