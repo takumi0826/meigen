@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TopService } from 'src/app/services/top.service';
-import { Item, LegendItem } from 'src/app/types/type';
+import { LegendItem } from 'src/app/types/type';
 
 @Component({
   selector: 'app-meigen-card',

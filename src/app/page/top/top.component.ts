@@ -8,12 +8,7 @@ import { TopService } from 'src/app/services/top.service';
   styleUrls: ['./top.component.scss'],
 })
 export class TopComponent implements OnInit {
-  category$ = this.topService.category$.pipe(
-    filter((c) => !!c.length),
-    map((c) => {
-      return c.map((v) => v.name);
-    })
-  );
+  category$ = this.topService.category$.pipe(filter((c) => !!c.length));
   selectCategory$ = this.topService.selectCategory$;
   searchValue$ = this.topService.searchValue$;
   legendItem$ = this.topService.legendItem$.pipe(
@@ -31,7 +26,7 @@ export class TopComponent implements OnInit {
       }
       if (category) {
         return list.filter((v) => {
-          return v.category.some((c) => c.parent.name === category);
+          return v.category.some((c) => c.parent.id === category);
         });
       }
       return list;
@@ -49,9 +44,9 @@ export class TopComponent implements OnInit {
     this.topService.searchValue$.next(value);
   }
 
-  onSelect(selected: string) {
+  onSelect(selected: number) {
     if (selected === this.selectCategory$.getValue()) {
-      this.topService.selectCategory$.next('');
+      this.topService.selectCategory$.next(0);
       return;
     }
     this.topService.selectCategory$.next(selected);
