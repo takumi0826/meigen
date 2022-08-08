@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { catchError, first, take } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { itemData, itemImage } from '../data/item';
 import { Category, CategoryResponse, Item, LegendItem } from '../types/type';
 import { AppService } from './app.service';
@@ -35,7 +36,7 @@ export class TopService {
    */
   public getLegend() {
     this.http
-      .get<LegendItem[]>('http://localhost:3000/legends/find-all')
+      .get<LegendItem[]>(`${environment.apiurl}legends/find-all`)
       .pipe(
         first(),
         catchError((err) => {
@@ -55,7 +56,7 @@ export class TopService {
    */
   public async getCategories() {
     this.http
-      .get<CategoryResponse[]>('http://localhost:3000/category/find-all')
+      .get<CategoryResponse[]>(`${environment.apiurl}category/find-all`)
       .pipe(
         first(),
         catchError((err) => {
