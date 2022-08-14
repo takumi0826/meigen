@@ -16,7 +16,10 @@ export class TopService {
   readonly searchValue$ = new BehaviorSubject<string>('');
   private readonly httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': environment.origin,
+      'Access-Control-Allow-Headers':
+        'Origin, X-Requested-With, Content-Type, Accept',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,UPDATE,OPTIONS',
     }),
   };
 
