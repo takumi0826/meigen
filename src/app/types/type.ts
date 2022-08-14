@@ -1,19 +1,25 @@
-export type Item = {
+export type LegendItem = {
   meigen: string;
   name: string;
-  category: Category;
+  category: LegendCategory[];
 };
 
-export type Category = {
-  parent: string;
-  child: string[];
-};
-
-export type CategoryType = {
-  [key: string]: {
-    default: string;
-    [key: string]: string;
+export type LegendCategory = {
+  parent: {
+    id: number;
+    name: string;
+  };
+  child: {
+    id: number;
+    name: string;
   };
 };
 
-export type CategoryParent = { [key: string]: string };
+export type Category = {
+  id: number;
+  name: string;
+  child: {
+    id: number;
+    name: string;
+  }[];
+};

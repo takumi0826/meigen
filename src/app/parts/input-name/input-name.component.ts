@@ -5,7 +5,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TopService } from 'src/app/services/top.service';
@@ -16,7 +16,7 @@ import { TopService } from 'src/app/services/top.service';
   styleUrls: ['./input-name.component.scss'],
 })
 export class InputNameComponent implements OnInit, OnDestroy {
-  formControl = new FormControl('', [Validators.required]);
+  formControl = new UntypedFormControl('', [Validators.required]);
   @Output() blur = new EventEmitter<string>();
   @Output() enter = new EventEmitter<string>();
 
@@ -25,7 +25,7 @@ export class InputNameComponent implements OnInit, OnDestroy {
   constructor(private topService: TopService) {}
 
   ngOnInit(): void {
-    this.topService.selectSubject$
+    this.topService.selectCategory$
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.formControl.reset();
@@ -42,11 +42,11 @@ export class InputNameComponent implements OnInit, OnDestroy {
 
   onBlur() {
     // if (this.isVaildate()) return;
-    this.blur.emit(this.hiraganaToKatakana(this.formControl.value));
+    this.blur.emit(this.formControl.value || '');
   }
 
   onEnter() {
-    this.enter.emit(this.hiraganaToKatakana(this.formControl.value));
+    this.enter.emit(this.formControl.value || '');
   }
 
   private hiraganaToKatakana(str: string) {

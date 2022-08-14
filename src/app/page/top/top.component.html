@@ -11,19 +11,19 @@
     <div class="categorys">
       <mat-chip-list aria-label="categorys selection">
         <mat-chip
-          *ngFor="let category of categorys"
+          *ngFor="let category of category$ | async"
           class="example-box"
           color="primary"
-          [selected]="category === selectedCategory"
-          (click)="onSelect(category)"
+          [selected]="(selectCategory$ | async) === category.id"
+          (click)="onSelect(category.id)"
         >
-          {{ category }}
+          {{ category.name }}
         </mat-chip>
       </mat-chip-list>
     </div>
   </div>
   <div class="card-area" *ngIf="(itemList$ | async)?.length; else notItemList">
-    <div class="" *ngFor="let item of itemList$ | async">
+    <div class="" *ngFor="let item of itemList$ | async; trackBy: trackCard">
       <app-meigen-card [item]="item"></app-meigen-card>
     </div>
   </div>

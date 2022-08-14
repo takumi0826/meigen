@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TopService } from 'src/app/services/top.service';
-import { Item } from 'src/app/types/type';
+import { LegendItem } from 'src/app/types/type';
 
 @Component({
   selector: 'app-meigen-card',
@@ -8,7 +8,7 @@ import { Item } from 'src/app/types/type';
   styleUrls: ['./meigen-card.component.scss'],
 })
 export class MeigenCardComponent implements OnInit {
-  @Input() item!: Item;
+  @Input() item!: LegendItem;
   cardImage = '';
 
   constructor(private topService: TopService) {}

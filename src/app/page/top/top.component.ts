@@ -1,52 +1,58 @@
-import { Component, ContentChild, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { InputNameComponent } from 'src/app/parts/input-name/input-name.component';
+import { Component, OnInit } from '@angular/core';
+import { combineLatest } from 'rxjs';
+import { filter, map, take } from 'rxjs/operators';
 import { TopService } from 'src/app/services/top.service';
-import { Category, CategoryType, Item } from 'src/app/types/type';
-import {
-  CategoryParentConst,
-  CategoryTypeConst,
-} from '../../constants/category-type-const';
 @Component({
   selector: 'app-top',
   templateUrl: './top.component.html',
   styleUrls: ['./top.component.scss'],
 })
 export class TopComponent implements OnInit {
-  panelOpenState = false;
-  initData!: Item[];
-  itemList = new BehaviorSubject<Item[]>([]);
-  get itemList$() {
-    return this.itemList.asObservable();
-  }
-  categorys!: string[];
-  selectedCategory: string = '';
-
+  category$ = this.topService.category$.pipe(filter((c) => !!c.length));
+  selectCategory$ = this.topService.selectCategory$;
+  searchValue$ = this.topService.searchValue$;
+  legendItem$ = this.topService.legendItem$.pipe(
+    filter((item) => !!item.length),
+    take(1)
+  );
+  itemList$ = combineLatest([
+    this.legendItem$,
+    this.selectCategory$,
+    this.searchValue$,
+  ]).pipe(
+    map(([list, category, search]) => {
+      if (search) {
+        return list.filter((v) => v.name.includes(search));
+      }
+      if (category) {
+        return list.filter((v) => {
+          return v.category.some((c) => c.parent.id === category);
+        });
+      }
+      return list;
+    })
+  );
   constructor(private topService: TopService) {}
 
-  ngOnInit(): void {
-    this.initData = this.topService.getItemData('');
-    this.itemList.next(this.initData);
-    this.categorys = Object.values(CategoryParentConst);
-  }
+  ngOnInit(): void {}
 
   onSearch(value: string) {
-    this.selectedCategory = '';
-    const itemData = this.topService.getItemData(value);
-    this.itemList.next(itemData);
-  }
-
-  onSelect(selected: string) {
-    this.topService.selectSubject$.next();
-    if (selected === this.selectedCategory) {
-      this.selectedCategory = '';
-      this.itemList.next(this.initData);
+    if (!value) {
+      this.topService.searchValue$.next('');
       return;
     }
-    this.selectedCategory = selected;
-    const itemData = this.topService
-      .getItemData('')
-      .filter((item) => item.category.parent === selected);
-    this.itemList.next(itemData);
+    this.topService.searchValue$.next(value);
+  }
+
+  onSelect(selected: number) {
+    if (selected === this.selectCategory$.getValue()) {
+      this.topService.selectCategory$.next(0);
+      return;
+    }
+    this.topService.selectCategory$.next(selected);
+  }
+
+  trackCard(index: any) {
+    return index;
   }
 }
