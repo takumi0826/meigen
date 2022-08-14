@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiurl: 'https://hoge/',
+  apiurl: 'https://salty-sands-26486.herokuapp.com/',
 };
