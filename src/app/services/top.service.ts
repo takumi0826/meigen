@@ -14,14 +14,14 @@ export class TopService {
   readonly legendItem$ = new BehaviorSubject<LegendItem[]>([]);
   readonly selectCategory$ = new BehaviorSubject<number>(0);
   readonly searchValue$ = new BehaviorSubject<string>('');
-  private readonly httpOptions = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': environment.origin,
-      'Access-Control-Allow-Headers':
-        'Origin, X-Requested-With, Content-Type, Accept',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,UPDATE,OPTIONS',
-    }),
-  };
+  // private readonly httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Access-Control-Allow-Origin': environment.origin,
+  //     'Access-Control-Allow-Headers':
+  //       'Origin, X-Requested-With, Content-Type, Accept',
+  //     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,UPDATE,OPTIONS',
+  //   }),
+  // };
 
   constructor(private http: HttpClient) {}
 
@@ -42,10 +42,7 @@ export class TopService {
    */
   public getLegend() {
     this.http
-      .get<LegendItem[]>(
-        `${environment.apiurl}legends/find-all`,
-        this.httpOptions
-      )
+      .get<LegendItem[]>(`${environment.apiurl}legends/find-all`)
       .pipe(
         first(),
         catchError((err) => {
@@ -65,10 +62,7 @@ export class TopService {
    */
   public async getCategories() {
     this.http
-      .get<Category[]>(
-        `${environment.apiurl}category/find-all`,
-        this.httpOptions
-      )
+      .get<Category[]>(`${environment.apiurl}category/find-all`)
       .pipe(
         first(),
         catchError((err) => {
