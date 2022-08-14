@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
@@ -14,6 +14,11 @@ export class TopService {
   readonly legendItem$ = new BehaviorSubject<LegendItem[]>([]);
   readonly selectCategory$ = new BehaviorSubject<number>(0);
   readonly searchValue$ = new BehaviorSubject<string>('');
+  private readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+    }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +39,10 @@ export class TopService {
    */
   public getLegend() {
     this.http
-      .get<LegendItem[]>(`${environment.apiurl}legends/find-all`)
+      .get<LegendItem[]>(
+        `${environment.apiurl}legends/find-all`,
+        this.httpOptions
+      )
       .pipe(
         first(),
         catchError((err) => {
@@ -54,7 +62,10 @@ export class TopService {
    */
   public async getCategories() {
     this.http
-      .get<Category[]>(`${environment.apiurl}category/find-all`)
+      .get<Category[]>(
+        `${environment.apiurl}category/find-all`,
+        this.httpOptions
+      )
       .pipe(
         first(),
         catchError((err) => {
