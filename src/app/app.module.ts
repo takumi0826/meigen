@@ -18,7 +18,6 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { ScrollTopComponent } from './parts/scroll-top/scroll-top.component';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
 import { HttpClientModule } from '@angular/common/http';
-import { CreateDataComponent } from './page/create-data/create-data.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { CreateDataComponent } from './page/create-data/create-data.component';
     FooterComponent,
     CategoryTypePipe,
     ScrollTopComponent,
-    CreateDataComponent,
   ],
   imports: [
     BrowserModule,
