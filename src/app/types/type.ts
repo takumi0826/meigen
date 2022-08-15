@@ -18,8 +18,10 @@ export type LegendCategory = {
 export type Category = {
   id: number;
   name: string;
-  child: {
-    id: number;
-    name: string;
-  }[];
+  child: ChildCategory;
 };
+
+export type ChildCategory = {
+  id: number;
+  name: string;
+}[];
