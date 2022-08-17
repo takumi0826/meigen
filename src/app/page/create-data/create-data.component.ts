@@ -13,7 +13,7 @@ import { filter, first, map } from 'rxjs/operators';
 import { AppService } from 'src/app/services/app.service';
 import { CreateDataService } from 'src/app/services/create-data.service';
 import { TopService } from 'src/app/services/top.service';
-import { Category, ChildCategory } from 'src/app/types/type';
+import { Category, ChildCategory, CreateLegendData } from 'src/app/types/type';
 
 @Component({
   selector: 'app-create-data',
@@ -51,8 +51,6 @@ export class CreateDataComponent implements OnInit {
 
   checkBoxValid(control: AbstractControl): ValidationErrors | null {
     const cat = Object.values(control.value);
-    console.log(control);
-
     return cat.some((v) => v) ? null : { checkBox: true };
   }
 
@@ -61,7 +59,23 @@ export class CreateDataComponent implements OnInit {
   }
 
   onSubmit(form: FormGroupDirective) {
-    console.log(form.value);
-    // this.options.contains(['name'])
+    const { meigen, name, category } = form.value;
+    const data: CreateLegendData = {
+      meigen,
+      name,
+      category: this.createNumbers(category),
+    };
+    console.log(data);
+    this.createDataService.create(data);
+  }
+
+  private createNumbers(category: {
+    [key: string]: FormControl<boolean | null>;
+  }): number[] {
+    const array = [];
+    for (const [id, checked] of Object.entries(category)) {
+      if (checked) array.push(Number(id));
+    }
+    return array;
   }
 }

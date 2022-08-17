@@ -25,3 +25,9 @@ export type ChildCategory = {
   id: number;
   name: string;
 }[];
+
+export type CreateLegendData = {
+  meigen: string;
+  name: string;
+  category: number[];
+};
