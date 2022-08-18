@@ -1,6 +1,15 @@
 .card {
+  overflow: hidden;
   &__title {
+    font-size: 22px;
+    max-width: 200px;
     font-family: "Noto Serif JP", serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__subtitle {
+    font-size: 12px;
   }
   &__image {
     border-radius: 100%;
@@ -8,6 +17,7 @@
     background: var(--base-background);
   }
   &__content {
+    word-break: break-word;
     font-family: "Noto Serif JP", serif;
   }
 }

@@ -1,0 +1,45 @@
+.delete {
+  padding: 40px 12px 0 12px;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__buttonWrap {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    padding: 8px 96px;
+    text-align: center;
+  }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legends {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: calc(100% / 3);
+    @media screen and (max-width: 640px) {
+      width: 50%;
+    }
+  }
+}
+
+.mat-cancel {
+  background-color: #3d3f40;
+  color: #fff;
+}
+.mat-delete {
+  background-color: #9e2c3f;
+  color: #fff;
+}

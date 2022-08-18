@@ -1,0 +1,22 @@
+<div class="delete">
+  <div class="container">
+    <section class="section">
+      <h2 class="delete__title">削除するデータを選択</h2>
+      <div class="legends">
+        <p *ngFor="let item of legends" class="legends__item">
+          <mat-checkbox [(ngModel)]="item.cheked">{{ item.name }}</mat-checkbox>
+        </p>
+      </div>
+    </section>
+    <div class="delete__buttonWrap">
+      <button
+        class="delete__button"
+        mat-raised-button
+        color="delete"
+        (click)="deleteItem()"
+      >
+        削除する
+      </button>
+    </div>
+  </div>
+</div>

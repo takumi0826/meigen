@@ -5,13 +5,12 @@ import { catchError, first } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { itemImage } from '../data/item';
 import { Category, LegendItem } from '../types/type';
+import { AppService } from './app.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TopService {
-  readonly category$ = new BehaviorSubject<Category[]>([]);
-  readonly legendItem$ = new BehaviorSubject<LegendItem[]>([]);
   readonly selectCategory$ = new BehaviorSubject<number>(0);
   readonly searchValue$ = new BehaviorSubject<string>('');
   // private readonly httpOptions = {
@@ -23,7 +22,7 @@ export class TopService {
   //   }),
   // };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private appService: AppService) {}
 
   // public getItemData(value: string) {
   //   if (!value.trim()) return this.shuffleArray(itemData);
@@ -51,9 +50,9 @@ export class TopService {
       )
       .subscribe({
         next: (v) => {
-          this.legendItem$.next(v);
+          this.appService.legendItem$.next(v);
         },
-        error: (err) => console.log(err),
+        error: (err) => console.error(err),
       });
   }
 
@@ -71,9 +70,9 @@ export class TopService {
       )
       .subscribe({
         next: (v) => {
-          this.category$.next(v);
+          this.appService.category$.next(v);
         },
-        error: (err) => console.log(err),
+        error: (err) => console.error(err),
       });
   }
 
