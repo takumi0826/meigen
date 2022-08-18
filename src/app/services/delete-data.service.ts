@@ -32,8 +32,17 @@ export class DeleteDataService {
             duration: 3 * 1000,
             verticalPosition: 'top',
             data: { text: '削除しました' },
+            panelClass: ['success-snackbar'],
           });
           this.topService.getLegend();
+        },
+        error: () => {
+          this._snackBar.openFromComponent(SnackBarComponent, {
+            duration: 3 * 1000,
+            verticalPosition: 'top',
+            data: { text: '削除に失敗しました' },
+            panelClass: ['failed-snackbar'],
+          });
         },
       });
   }

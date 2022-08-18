@@ -70,7 +70,11 @@ body {
   color: var(--base-color);
   background-color: var(--base-background);
 }
-.mat-snack-bar-container {
+.success-snackbar {
   background-color: #95e6be;
   color: #222;
+}
+.failed-snackbar {
+  background-color: #9e2c3f;
+  color: #fff;
 }

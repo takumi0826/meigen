@@ -44,7 +44,7 @@ export class TopService {
         next: (v) => {
           this.appService.legendItem$.next(v);
         },
-        error: (err) => console.log(err),
+        error: (err) => console.error(err),
       });
   }
 
@@ -64,7 +64,7 @@ export class TopService {
         next: (v) => {
           this.appService.category$.next(v);
         },
-        error: (err) => console.log(err),
+        error: (err) => console.error(err),
       });
   }
 

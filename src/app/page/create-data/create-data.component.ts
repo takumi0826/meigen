@@ -66,7 +66,6 @@ export class CreateDataComponent implements OnInit {
       name,
       category: this.createNumbers(category),
     };
-    console.log(data);
     this.createDataService.create(data);
 
     //データの初期化

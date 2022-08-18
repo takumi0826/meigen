@@ -36,7 +36,7 @@ export class CreateDataService {
         next: (v) => {
           this._category$.next(v);
         },
-        error: (err) => console.log(err),
+        error: (err) => console.error(err),
       });
   }
 
@@ -55,10 +55,18 @@ export class CreateDataService {
             duration: 3 * 1000,
             verticalPosition: 'top',
             data: { text: '作成しました' },
+            panelClass: ['success-snackbar'],
           });
           this.topService.getLegend();
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          this._snackBar.openFromComponent(SnackBarComponent, {
+            duration: 3 * 1000,
+            verticalPosition: 'top',
+            data: { text: '作成に失敗しました' },
+            panelClass: ['failed-snackbar'],
+          });
+        },
       });
   }
 }
