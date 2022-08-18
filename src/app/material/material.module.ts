@@ -12,7 +12,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { MatOptionModule } from '@angular/material/option';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -30,6 +31,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatChipsModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatSidenavModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatToolbarModule,
@@ -44,6 +47,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatChipsModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatSidenavModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}

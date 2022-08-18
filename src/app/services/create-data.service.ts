@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, of } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { SnackBarComponent } from '../parts/snack-bar/snack-bar.component';
 import { Category, ChildCategory, CreateLegendData } from '../types/type';
+import { TopService } from './top.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +17,11 @@ export class CreateDataService {
     return this._category$.asObservable();
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private topService: TopService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   loadCategory() {
     this.http
@@ -43,8 +50,13 @@ export class CreateDataService {
         })
       )
       .subscribe({
-        next: (v) => {
-          console.log(v);
+        next: () => {
+          this._snackBar.openFromComponent(SnackBarComponent, {
+            duration: 3 * 1000,
+            verticalPosition: 'top',
+            data: { text: '作成しました' },
+          });
+          this.topService.getLegend();
         },
         error: (err) => console.log(err),
       });

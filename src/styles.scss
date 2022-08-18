@@ -5,6 +5,7 @@
   --base-color: #191919;
   --sub-color: #484646;
   --base-background: white;
+  --sub-background: #fcfcfc;
   --base-outline: 0, 0, 0, 0.12;
   --base-placeholder: 0, 0, 0, 0.4;
   --card-gradient: linear-gradient(-70deg, #a2facf 0%, #64acff 100%);
@@ -15,6 +16,7 @@
   --base-color: #bdc1c6;
   --sub-color: #a1a4a8;
   --base-background: #202124;
+  --sub-background: #3a3b3d;
   --base-outline: 255, 255, 255, 0.12;
   --base-placeholder: 255, 255, 255, 0.4;
   --card-gradient: linear-gradient(
@@ -37,6 +39,15 @@ body {
   margin: 0;
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .footer {
+    margin-top: auto;
+  }
+}
+
 .mat-typography {
   font: 400 16px Roboto, "Helvetica Neue", sans-serif;
 }
@@ -54,4 +65,12 @@ body {
 }
 .mat-card-subtitle {
   color: var(--sub-color);
+}
+.mat-dialog-container {
+  color: var(--base-color);
+  background-color: var(--base-background);
+}
+.mat-snack-bar-container {
+  background-color: #95e6be;
+  color: #222;
 }

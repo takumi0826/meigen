@@ -19,6 +19,9 @@ import { ScrollTopComponent } from './parts/scroll-top/scroll-top.component';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateDataComponent } from './page/create-data/create-data.component';
+import { DeleteDataComponent } from './page/delete-data/delete-data.component';
+import { NavigateDialogComponent } from './parts/dialog/navigate-dialog/navigate-dialog.component';
+import { SnackBarComponent } from './parts/snack-bar/snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { CreateDataComponent } from './page/create-data/create-data.component';
     CategoryTypePipe,
     ScrollTopComponent,
     CreateDataComponent,
+    DeleteDataComponent,
+    NavigateDialogComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,

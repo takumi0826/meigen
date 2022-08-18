@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatest } from 'rxjs';
 import { filter, map, take } from 'rxjs/operators';
+import { AppService } from 'src/app/services/app.service';
 import { TopService } from 'src/app/services/top.service';
 @Component({
   selector: 'app-top',
@@ -8,12 +9,11 @@ import { TopService } from 'src/app/services/top.service';
   styleUrls: ['./top.component.scss'],
 })
 export class TopComponent implements OnInit {
-  category$ = this.topService.category$.pipe(filter((c) => !!c.length));
+  category$ = this.appService.category$.pipe(filter((c) => !!c.length));
   selectCategory$ = this.topService.selectCategory$;
   searchValue$ = this.topService.searchValue$;
-  legendItem$ = this.topService.legendItem$.pipe(
-    filter((item) => !!item.length),
-    take(1)
+  legendItem$ = this.appService.legendItem$.pipe(
+    filter((item) => !!item.length)
   );
   itemList$ = combineLatest([
     this.legendItem$,
@@ -32,7 +32,7 @@ export class TopComponent implements OnInit {
       return list;
     })
   );
-  constructor(private topService: TopService) {}
+  constructor(private topService: TopService, private appService: AppService) {}
 
   ngOnInit(): void {}
 

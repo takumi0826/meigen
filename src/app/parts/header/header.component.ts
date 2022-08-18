@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { map, first } from 'rxjs/operators';
 import { AppService } from 'src/app/services/app.service';
+import { NavigateDialogComponent } from '../dialog/navigate-dialog/navigate-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ import { AppService } from 'src/app/services/app.service';
 export class HeaderComponent implements OnInit {
   isDark$ = this.appService.isDark.asObservable();
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService, public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -20,5 +22,16 @@ export class HeaderComponent implements OnInit {
     el.classList.contains('dark')
       ? el.classList.remove('dark')
       : el.classList.add('dark');
+  }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(NavigateDialogComponent, {
+      width: '300px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }

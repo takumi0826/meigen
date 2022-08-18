@@ -9,6 +9,7 @@ import {
   ValidatorFn,
   ValidationErrors,
 } from '@angular/forms';
+import { from } from 'rxjs';
 import { filter, first, map } from 'rxjs/operators';
 import { AppService } from 'src/app/services/app.service';
 import { CreateDataService } from 'src/app/services/create-data.service';
@@ -58,8 +59,8 @@ export class CreateDataComponent implements OnInit {
     return this.options.controls[name].errors?.[validName];
   }
 
-  onSubmit(form: FormGroupDirective) {
-    const { meigen, name, category } = form.value;
+  onSubmit(formData: FormGroup, formDirective: FormGroupDirective) {
+    const { meigen, name, category } = formData.value;
     const data: CreateLegendData = {
       meigen,
       name,
@@ -67,6 +68,10 @@ export class CreateDataComponent implements OnInit {
     };
     console.log(data);
     this.createDataService.create(data);
+
+    //データの初期化
+    formDirective.resetForm();
+    this.options.reset();
   }
 
   private createNumbers(category: {

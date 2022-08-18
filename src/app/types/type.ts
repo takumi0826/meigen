@@ -1,4 +1,5 @@
 export type LegendItem = {
+  id: number;
   meigen: string;
   name: string;
   category: LegendCategory[];

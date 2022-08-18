@@ -1,12 +1,4 @@
 <mat-toolbar color="primary" class="header">
-  <!-- <button
-      mat-icon-button
-      class="header__button"
-      aria-label="header icon-button with menu icon"
-    >
-      <mat-icon class="header__icon">menu</mat-icon>
-    </button> -->
-  <h1 class="header__title">レジェンドたちの名言</h1>
   <button
     mat-icon-button
     class="header__button header__button--rigit"
@@ -16,5 +8,9 @@
     <mat-icon class="header__icon">{{
       (isDark$ | async) ? "light_mode" : "dark_mode"
     }}</mat-icon>
+  </button>
+  <h1 class="header__title" [routerLink]="['/']">レジェンドたちの名言</h1>
+  <button mat-icon-button (click)="openDialog('200ms', '200ms')">
+    <mat-icon>edit</mat-icon>
   </button>
 </mat-toolbar>
