@@ -22,6 +22,7 @@ import { CreateDataComponent } from './page/create-data/create-data.component';
 import { DeleteDataComponent } from './page/delete-data/delete-data.component';
 import { NavigateDialogComponent } from './parts/dialog/navigate-dialog/navigate-dialog.component';
 import { SnackBarComponent } from './parts/snack-bar/snack-bar.component';
+import { ThreePointLeaderPipe } from './pipe/three-point-leader.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SnackBarComponent } from './parts/snack-bar/snack-bar.component';
     DeleteDataComponent,
     NavigateDialogComponent,
     SnackBarComponent,
+    ThreePointLeaderPipe,
   ],
   imports: [
     BrowserModule,

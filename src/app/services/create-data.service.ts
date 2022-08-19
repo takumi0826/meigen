@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, of } from 'rxjs';
 import { catchError, first } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+// import { options } from '../constant/request-header.const';
 import { SnackBarComponent } from '../parts/snack-bar/snack-bar.component';
 import { Category, ChildCategory, CreateLegendData } from '../types/type';
 import { TopService } from './top.service';
@@ -16,6 +17,11 @@ export class CreateDataService {
   get category$() {
     return this._category$.asObservable();
   }
+  options = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+    }),
+  };
 
   constructor(
     private http: HttpClient,
@@ -25,11 +31,14 @@ export class CreateDataService {
 
   loadCategory() {
     this.http
-      .get<ChildCategory>(`${environment.apiurl}category/find-child`)
+      .get<ChildCategory>(
+        `${environment.apiurl}category/find-child`,
+        this.options
+      )
       .pipe(
         first(),
         catchError((err) => {
-          throw 'error in source. Details: ' + err;
+          throw err;
         })
       )
       .subscribe({
@@ -46,7 +55,7 @@ export class CreateDataService {
       .pipe(
         first(),
         catchError((err) => {
-          throw 'error in source. Details: ' + err;
+          throw err;
         })
       )
       .subscribe({
