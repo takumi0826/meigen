@@ -36,8 +36,8 @@ export class DeleteDataComponent implements OnInit {
     const target = this.legends.filter((v) => v.cheked);
     //選択がない場合処理を行わない
     if (!target.length) return;
-
     const ids = target.map((v) => v.id).join();
+
     this.deleteDataService.remove(ids);
   }
 }

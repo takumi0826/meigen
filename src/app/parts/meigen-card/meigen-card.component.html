@@ -1,6 +1,8 @@
 <mat-card class="card gradient-bg">
   <mat-card-title-group>
-    <mat-card-title class="card__title">{{ item.name }}</mat-card-title>
+    <mat-card-title class="card__title" [title]="item.name">{{
+      item.name | threePointLeader: 9
+    }}</mat-card-title>
     <mat-card-subtitle class="card__subtitle">{{
       item.category | categoryType
     }}</mat-card-subtitle>

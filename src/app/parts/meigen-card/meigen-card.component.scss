@@ -2,11 +2,8 @@
   overflow: hidden;
   &__title {
     font-size: 22px;
-    max-width: 200px;
     font-family: "Noto Serif JP", serif;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   &__subtitle {
     font-size: 12px;
