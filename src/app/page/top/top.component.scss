@@ -28,7 +28,12 @@
   gap: 16px;
   max-width: 1040px;
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 1000px) {
+    margin-top: 60px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: 680px) {
     margin-top: 60px;
     grid-template-columns: 1fr;
   }
