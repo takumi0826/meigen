@@ -5,7 +5,7 @@
       <div class="legends">
         <p *ngFor="let item of legends" class="legends__item">
           <mat-checkbox [(ngModel)]="item.cheked" [title]="item.name">{{
-            item.name | threePointLeader: 8
+            item.name | threePointLeader: 12
           }}</mat-checkbox>
         </p>
       </div>
