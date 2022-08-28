@@ -10,7 +10,28 @@
     }}</mat-icon>
   </button>
   <h1 class="header__title" [routerLink]="['/']">レジェンドたちの名言</h1>
-  <button mat-icon-button (click)="openDialog('200ms', '200ms')">
+  <!-- <button mat-icon-button (click)="openDialog('200ms', '200ms')">
+    <mat-icon>edit</mat-icon>
+  </button> -->
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
     <mat-icon>edit</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/']">
+      <mat-icon>home</mat-icon>
+      <span>ホーム</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/create']">
+      <mat-icon>add_circle</mat-icon>
+      <span>データ作成</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/delete']">
+      <mat-icon>remove_circle</mat-icon>
+      <span>データ削除</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
