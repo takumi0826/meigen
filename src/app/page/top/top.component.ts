@@ -45,6 +45,9 @@ export class TopComponent implements OnInit {
   }
 
   onSelect(selected: number) {
+    if (!!this.topService.searchValue$.getValue()) {
+      this.topService.searchValue$.next('');
+    }
     if (selected === this.selectCategory$.getValue()) {
       this.topService.selectCategory$.next(0);
       return;
