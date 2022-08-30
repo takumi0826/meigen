@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { catchError, first } from 'rxjs/operators';
+import { catchError, first, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { itemImage } from '../data/item';
 import { Category, LegendItem } from '../types/type';
@@ -44,6 +44,7 @@ export class TopService {
       .get<LegendItem[]>(`${environment.apiurl}legends/find-all`)
       .pipe(
         first(),
+        tap(() => this.appService.loading$.next(true)),
         catchError((err) => {
           throw 'error in source. Details: ' + err;
         })
@@ -53,6 +54,9 @@ export class TopService {
           this.appService.legendItem$.next(v);
         },
         error: (err) => console.error(err),
+        complete: () => {
+          this.appService.loading$.next(false);
+        },
       });
   }
 
@@ -64,6 +68,7 @@ export class TopService {
       .get<Category[]>(`${environment.apiurl}category/find-all`)
       .pipe(
         first(),
+        tap(() => this.appService.loading$.next(true)),
         catchError((err) => {
           throw 'error in source. Details: ' + err;
         })
@@ -73,6 +78,9 @@ export class TopService {
           this.appService.category$.next(v);
         },
         error: (err) => console.error(err),
+        complete: () => {
+          this.appService.loading$.next(false);
+        },
       });
   }
 

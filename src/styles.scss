@@ -42,9 +42,9 @@ body {
 .layout {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  .footer {
-    margin-top: auto;
+  height: 100vh;
+  .main {
+    flex: 1;
   }
 }
 

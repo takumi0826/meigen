@@ -2,11 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, of } from 'rxjs';
-import { catchError, first } from 'rxjs/operators';
+import { catchError, first, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 // import { options } from '../constant/request-header.const';
 import { SnackBarComponent } from '../parts/snack-bar/snack-bar.component';
 import { Category, ChildCategory, CreateLegendData } from '../types/type';
+import { AppService } from './app.service';
 import { TopService } from './top.service';
 
 @Injectable({
@@ -26,6 +27,7 @@ export class CreateDataService {
   constructor(
     private http: HttpClient,
     private topService: TopService,
+    private appService: AppService,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -37,6 +39,7 @@ export class CreateDataService {
       )
       .pipe(
         first(),
+        tap(() => this.appService.loading$.next(true)),
         catchError((err) => {
           throw err;
         })
@@ -46,6 +49,9 @@ export class CreateDataService {
           this._category$.next(v);
         },
         error: (err) => console.error(err),
+        complete: () => {
+          this.appService.loading$.next(false);
+        },
       });
   }
 
@@ -61,8 +67,8 @@ export class CreateDataService {
       .subscribe({
         next: () => {
           this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 3 * 1000,
-            verticalPosition: 'top',
+            duration: 2 * 1000,
+            verticalPosition: 'bottom',
             data: { text: '作成しました' },
             panelClass: ['success-snackbar'],
           });
@@ -70,8 +76,8 @@ export class CreateDataService {
         },
         error: (err) => {
           this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 3 * 1000,
-            verticalPosition: 'top',
+            duration: 2 * 1000,
+            verticalPosition: 'bottom',
             data: { text: '作成に失敗しました' },
             panelClass: ['failed-snackbar'],
           });

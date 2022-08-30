@@ -10,6 +10,7 @@ export class AppService {
   readonly isDark = new BehaviorSubject<boolean>(false);
   readonly category$ = new BehaviorSubject<Category[]>([]);
   readonly legendItem$ = new BehaviorSubject<LegendItem[]>([]);
+  readonly loading$ = new BehaviorSubject<boolean>(true);
 
   constructor() {}
 

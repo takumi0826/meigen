@@ -15,6 +15,7 @@ export class TopComponent implements OnInit {
   legendItem$ = this.appService.legendItem$.pipe(
     filter((item) => !!item.length)
   );
+  loading$ = this.appService.loading$;
   itemList$ = combineLatest([
     this.legendItem$,
     this.selectCategory$,

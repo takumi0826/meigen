@@ -25,6 +25,7 @@ export class CreateDataComponent implements OnInit {
   isShow = false;
   category$ = this.createDataService.category$.pipe(filter((v) => !!v.length));
   options!: FormGroup;
+  loading$ = this.appService.loading$;
 
   constructor(
     private appService: AppService,
