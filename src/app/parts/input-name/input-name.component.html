@@ -1,14 +1,15 @@
-<mat-form-field appearance="outline" class="search">
-  <mat-label>人物を入力</mat-label>
-  <input
-    matInput
-    type="search"
-    placeholder="例）イチロー"
-    [formControl]="formControl"
-    (blur)="onBlur()"
-    (keyup.enter)="onEnter()"
-  />
-  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  <!-- <mat-hint>人物を入力</mat-hint> -->
-  <mat-error *ngIf="formControl.hasError('required')">入力してね</mat-error>
-</mat-form-field>
+<form action="#" (submit)="onEnter()">
+  <mat-form-field appearance="outline" class="search">
+    <mat-label>人物を入力</mat-label>
+    <input
+      matInput
+      type="search"
+      placeholder="例）イチロー"
+      [formControl]="formControl"
+      (blur)="onBlur()"
+    />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <!-- <mat-hint>人物を入力</mat-hint> -->
+    <mat-error *ngIf="formControl.hasError('required')">入力してね</mat-error>
+  </mat-form-field>
+</form>
