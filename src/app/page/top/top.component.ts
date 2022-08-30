@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatest } from 'rxjs';
-import { filter, map, take } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { AppService } from 'src/app/services/app.service';
 import { TopService } from 'src/app/services/top.service';
 @Component({
@@ -44,7 +44,10 @@ export class TopComponent implements OnInit {
   );
   constructor(private topService: TopService, private appService: AppService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.topService.searchValue$.next('');
+    this.topService.selectCategory$.next(0);
+  }
 
   /** 検索処理 */
   onSearch(value: string) {
@@ -57,10 +60,7 @@ export class TopComponent implements OnInit {
 
   /** カテゴリボタン押下 */
   onSelect(selected: number) {
-    if (!!this.topService.searchValue$.getValue()) {
-      this.topService.searchValue$.next('');
-    }
-    if (selected === this.selectCategory$.getValue()) {
+    if (selected === this.topService.selectCategory$.getValue()) {
       this.topService.selectCategory$.next(0);
       return;
     }
