@@ -48,3 +48,10 @@
   background-color: #9e2c3f;
   color: #fff;
 }
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

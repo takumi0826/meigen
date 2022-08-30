@@ -1,36 +1,46 @@
 <div class="top">
-  <div class="container size">
-    <h2 class="size__title">名言をさがす</h2>
-    <app-input-name
-      (blur)="onSearch($event)"
-      (enter)="onSearch($event)"
-    ></app-input-name>
-    <!-- <div class="size__buttonWrap">
-      <button mat-raised-button color="primary">検索</button>
-    </div> -->
-    <div class="categorys">
-      <mat-chip-list aria-label="categorys selection">
-        <mat-chip
-          *ngFor="let category of category$ | async"
-          class="example-box"
-          color="primary"
-          [selected]="(selectCategory$ | async) === category.id"
-          (click)="onSelect(category.id)"
-        >
-          {{ category.name }}
-        </mat-chip>
-      </mat-chip-list>
+  <div class="top__container" *ngIf="!(loading$ | async); else loading">
+    <div class="top__search">
+      <h2 class="size__title">名言をさがす</h2>
+      <app-input-name
+        (blur)="onSearch($event)"
+        (enter)="onSearch($event)"
+      ></app-input-name>
+      <!-- <div class="size__buttonWrap">
+        <button mat-raised-button color="primary">検索</button>
+      </div> -->
+      <div class="categorys">
+        <mat-chip-list aria-label="categorys selection">
+          <mat-chip
+            *ngFor="let category of category$ | async"
+            class="example-box"
+            color="primary"
+            [selected]="(selectCategory$ | async) === category.id"
+            (click)="onSelect(category.id)"
+          >
+            {{ category.name }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
     </div>
-  </div>
-  <div class="card-area" *ngIf="(itemList$ | async)?.length; else notItemList">
-    <div class="" *ngFor="let item of itemList$ | async; trackBy: trackCard">
-      <app-meigen-card [item]="item"></app-meigen-card>
+    <div
+      class="top__card-area"
+      *ngIf="(itemList$ | async)?.length; else notItemList"
+    >
+      <div class="" *ngFor="let item of itemList$ | async; trackBy: trackCard">
+        <app-meigen-card [item]="item"></app-meigen-card>
+      </div>
     </div>
+    <ng-template #notItemList>
+      <div class="not-found">
+        <mat-icon>sentiment_very_dissatisfied</mat-icon>
+        <p>ごめんね。見つからなかった</p>
+      </div>
+    </ng-template>
   </div>
-  <ng-template #notItemList>
-    <div class="not-found">
-      <mat-icon>sentiment_very_dissatisfied</mat-icon>
-      <p>ごめんね。見つからなかった</p>
+  <ng-template #loading>
+    <div class="loading">
+      <mat-spinner></mat-spinner>
     </div>
   </ng-template>
 </div>

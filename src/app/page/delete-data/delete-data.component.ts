@@ -13,6 +13,7 @@ import { TopService } from 'src/app/services/top.service';
 })
 export class DeleteDataComponent implements OnInit {
   legends!: { id: number; name: string; cheked: boolean }[];
+  loading$ = this.appService.loading$;
 
   constructor(
     private topService: TopService,

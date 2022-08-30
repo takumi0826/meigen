@@ -29,8 +29,8 @@ export class DeleteDataService {
       .subscribe({
         next: () => {
           this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 3 * 1000,
-            verticalPosition: 'top',
+            duration: 2 * 1000,
+            verticalPosition: 'bottom',
             data: { text: '削除しました' },
             panelClass: ['success-snackbar'],
           });
@@ -38,8 +38,8 @@ export class DeleteDataService {
         },
         error: () => {
           this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 3 * 1000,
-            verticalPosition: 'top',
+            duration: 2 * 1000,
+            verticalPosition: 'bottom',
             data: { text: '削除に失敗しました' },
             panelClass: ['failed-snackbar'],
           });
