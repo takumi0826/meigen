@@ -21,14 +21,24 @@ export class TopComponent implements OnInit {
     this.searchValue$,
   ]).pipe(
     map(([list, category, search]) => {
-      if (search) {
+      // 人物名とカテゴリーで検索
+      if (search && category) {
+        const searchList = list.filter((v) => v.name.includes(search));
+        return searchList.filter((v) => {
+          return v.category.some((c) => c.parent.id === category);
+        });
+      }
+      // 人物名で検索
+      if (search && !category) {
         return list.filter((v) => v.name.includes(search));
       }
-      if (category) {
+      // カテゴリーで検索
+      if (!search && category) {
         return list.filter((v) => {
           return v.category.some((c) => c.parent.id === category);
         });
       }
+
       return list;
     })
   );
@@ -36,6 +46,7 @@ export class TopComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /** 検索処理 */
   onSearch(value: string) {
     if (!value) {
       this.topService.searchValue$.next('');
@@ -44,6 +55,7 @@ export class TopComponent implements OnInit {
     this.topService.searchValue$.next(value);
   }
 
+  /** カテゴリボタン押下 */
   onSelect(selected: number) {
     if (!!this.topService.searchValue$.getValue()) {
       this.topService.searchValue$.next('');
