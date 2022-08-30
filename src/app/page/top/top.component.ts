@@ -37,7 +37,6 @@ export class TopComponent implements OnInit {
   ngOnInit(): void {}
 
   onSearch(value: string) {
-    this.topService.selectCategory$.next(0);
     if (!value) {
       this.topService.searchValue$.next('');
       return;
