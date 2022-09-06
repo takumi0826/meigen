@@ -1,4 +1,4 @@
-# [レジェンドたちの名言](legends-guotations.netlify.app/)
+# [レジェンドたちの名言](https://legends-guotations.netlify.app/)
 
 ## 技術スタック
 
