@@ -1,7 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { catchError, first, tap } from 'rxjs/operators';
+import { BehaviorSubject, of } from 'rxjs';
+import { catchError, finalize, first, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { itemImage } from '../data/item';
 import { Category, LegendItem } from '../types/type';
@@ -45,17 +49,15 @@ export class TopService {
       .pipe(
         first(),
         tap(() => this.appService.loading$.next(true)),
-        catchError((err) => {
-          throw 'error in source. Details: ' + err;
-        })
+        catchError((err: HttpErrorResponse) => {
+          console.error(err.message);
+          return of([]);
+        }),
+        finalize(() => this.appService.loading$.next(false))
       )
       .subscribe({
         next: (v) => {
           this.appService.legendItem$.next(v);
-        },
-        error: (err) => console.error(err),
-        complete: () => {
-          this.appService.loading$.next(false);
         },
       });
   }

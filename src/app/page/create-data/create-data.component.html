@@ -1,53 +1,63 @@
 <div class="create">
-  <form
-    *ngIf="options && !(loading$ | async); else loading"
-    #formDirective="ngForm"
-    [formGroup]="options"
-    (ngSubmit)="onSubmit(options, formDirective)"
-    class="create__form"
-  >
-    <div class="container">
-      <section class="section">
-        <mat-form-field appearance="fill" class="section__name">
-          <mat-label>人物名</mat-label>
-          <input matInput placeholder="人物名" formControlName="name" />
-          <mat-error *ngIf="checkError('name', 'required')">必須です</mat-error>
-        </mat-form-field>
-      </section>
-      <section class="section">
-        <mat-form-field class="section__meigen" appearance="fill">
-          <mat-label>名言</mat-label>
-          <textarea
-            matInput
-            class="section__textarea"
-            formControlName="meigen"
-          ></textarea>
-          <mat-error *ngIf="checkError('meigen', 'required')"
-            >必須です</mat-error
+  <ng-container *ngIf="!(loading$ | async); else loading">
+    <form
+      *ngIf="options; else notItemList"
+      #formDirective="ngForm"
+      [formGroup]="options"
+      (ngSubmit)="onSubmit(options, formDirective)"
+      class="create__form"
+    >
+      <div class="container">
+        <section class="section">
+          <mat-form-field appearance="fill" class="section__name">
+            <mat-label>人物名</mat-label>
+            <input matInput placeholder="人物名" formControlName="name" />
+            <mat-error *ngIf="checkError('name', 'required')"
+              >必須です</mat-error
+            >
+          </mat-form-field>
+        </section>
+        <section class="section">
+          <mat-form-field class="section__meigen" appearance="fill">
+            <mat-label>名言</mat-label>
+            <textarea
+              matInput
+              class="section__textarea"
+              formControlName="meigen"
+            ></textarea>
+            <mat-error *ngIf="checkError('meigen', 'required')"
+              >必須です</mat-error
+            >
+          </mat-form-field>
+        </section>
+        <section class="section" formGroupName="category">
+          <h4>カテゴリー ※1つ以上選択</h4>
+          <p *ngFor="let item of category$ | async">
+            <mat-checkbox [formControlName]="item.id">{{
+              item.name
+            }}</mat-checkbox>
+          </p>
+        </section>
+        <div class="create__buttonWrap">
+          <button
+            class="create__button"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!options.valid"
           >
-        </mat-form-field>
-      </section>
-      <section class="section" formGroupName="category">
-        <h4>カテゴリー ※1つ以上選択</h4>
-        <p *ngFor="let item of category$ | async">
-          <mat-checkbox [formControlName]="item.id">{{
-            item.name
-          }}</mat-checkbox>
-        </p>
-      </section>
-      <div class="create__buttonWrap">
-        <button
-          class="create__button"
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="!options.valid"
-        >
-          作成する
-        </button>
+            作成する
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+    <ng-template #notItemList>
+      <div class="failed-data">
+        <mat-icon>sentiment_very_dissatisfied</mat-icon>
+        <p>データの取得に失敗しました</p>
+      </div>
+    </ng-template>
+  </ng-container>
   <ng-template #loading>
     <div class="loading">
       <mat-spinner></mat-spinner>

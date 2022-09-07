@@ -1,8 +1,12 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, of } from 'rxjs';
-import { catchError, first, tap } from 'rxjs/operators';
+import { catchError, finalize, first, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 // import { options } from '../constant/request-header.const';
 import { SnackBarComponent } from '../parts/snack-bar/snack-bar.component';
@@ -40,17 +44,15 @@ export class CreateDataService {
       .pipe(
         first(),
         tap(() => this.appService.loading$.next(true)),
-        catchError((err) => {
-          throw err;
-        })
+        catchError((err: HttpErrorResponse) => {
+          console.error(err.message);
+          return of([]);
+        }),
+        finalize(() => this.appService.loading$.next(false))
       )
       .subscribe({
         next: (v) => {
           this._category$.next(v);
-        },
-        error: (err) => console.error(err),
-        complete: () => {
-          this.appService.loading$.next(false);
         },
       });
   }

@@ -1,26 +1,34 @@
 <div class="delete">
-  <div class="container" *ngIf="!(loading$ | async); else loading">
-    <section class="section">
-      <h2 class="delete__title">削除するデータを選択</h2>
-      <div class="legends">
-        <p *ngFor="let item of legends" class="legends__item">
-          <mat-checkbox [(ngModel)]="item.cheked" [title]="item.name">{{
-            item.name | threePointLeader: 12
-          }}</mat-checkbox>
-        </p>
+  <ng-container *ngIf="!(loading$ | async); else loading">
+    <div class="container" *ngIf="legends.length; else notItemList">
+      <section class="section">
+        <h2 class="delete__title">削除するデータを選択</h2>
+        <div class="legends">
+          <p *ngFor="let item of legends" class="legends__item">
+            <mat-checkbox [(ngModel)]="item.cheked" [title]="item.name">{{
+              item.name | threePointLeader: 12
+            }}</mat-checkbox>
+          </p>
+        </div>
+      </section>
+      <div class="delete__buttonWrap">
+        <button
+          class="delete__button"
+          mat-raised-button
+          color="delete"
+          (click)="deleteItem()"
+        >
+          削除する
+        </button>
       </div>
-    </section>
-    <div class="delete__buttonWrap">
-      <button
-        class="delete__button"
-        mat-raised-button
-        color="delete"
-        (click)="deleteItem()"
-      >
-        削除する
-      </button>
     </div>
-  </div>
+    <ng-template #notItemList>
+      <div class="failed-data">
+        <mat-icon>sentiment_very_dissatisfied</mat-icon>
+        <p>データの取得に失敗しました</p>
+      </div>
+    </ng-template>
+  </ng-container>
   <ng-template #loading>
     <div class="loading">
       <mat-spinner></mat-spinner>

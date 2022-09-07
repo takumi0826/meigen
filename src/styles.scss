@@ -78,3 +78,17 @@ body {
   background-color: #9e2c3f;
   color: #fff;
 }
+.failed-data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-family: Roboto;
+  .mat-icon {
+    margin: 0 auto;
+    font-size: 160px;
+    height: 160px;
+    width: 160px;
+  }
+}
