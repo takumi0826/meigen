@@ -17,8 +17,5 @@ export class AppComponent implements OnInit {
       document.documentElement.classList.add('dark');
       this.appService.isDark.next(true);
     }
-
-    this.topService.getCategories();
-    this.topService.getLegend();
   }
 }

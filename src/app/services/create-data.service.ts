@@ -18,25 +18,16 @@ import { TopService } from './top.service';
   providedIn: 'root',
 })
 export class CreateDataService {
-  readonly _category$ = new BehaviorSubject<ChildCategory>([]);
-  get category$() {
-    return this._category$.asObservable();
-  }
   options = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
     }),
   };
 
-  constructor(
-    private http: HttpClient,
-    private topService: TopService,
-    private appService: AppService,
-    private _snackBar: MatSnackBar
-  ) {}
+  constructor(private http: HttpClient, private appService: AppService) {}
 
   loadCategory() {
-    this.http
+    return this.http
       .get<ChildCategory>(
         `${environment.apiurl}category/find-child`,
         this.options
@@ -49,41 +40,17 @@ export class CreateDataService {
           return of([]);
         }),
         finalize(() => this.appService.loading$.next(false))
-      )
-      .subscribe({
-        next: (v) => {
-          this._category$.next(v);
-        },
-      });
+      );
   }
 
   create(data: CreateLegendData) {
-    this.http
+    return this.http
       .post<{ count: number }>(`${environment.apiurl}legends/create`, data)
       .pipe(
         first(),
         catchError((err) => {
           throw err;
         })
-      )
-      .subscribe({
-        next: () => {
-          this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 2 * 1000,
-            verticalPosition: 'bottom',
-            data: { text: '作成しました' },
-            panelClass: ['success-snackbar'],
-          });
-          this.topService.getLegend();
-        },
-        error: (err) => {
-          this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 2 * 1000,
-            verticalPosition: 'bottom',
-            data: { text: '作成に失敗しました' },
-            panelClass: ['failed-snackbar'],
-          });
-        },
-      });
+      );
   }
 }

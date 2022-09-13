@@ -8,7 +8,7 @@ import { BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize, first, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { itemImage } from '../data/item';
-import { Category, LegendItem } from '../types/type';
+import { Category, Legends } from '../types/type';
 import { AppService } from './app.service';
 
 @Injectable({
@@ -41,50 +41,8 @@ export class TopService {
   }
 
   /**
-   * getLegend
-   */
-  public getLegend() {
-    this.http
-      .get<LegendItem[]>(`${environment.apiurl}legends/find-all`)
-      .pipe(
-        first(),
-        tap(() => this.appService.loading$.next(true)),
-        catchError((err: HttpErrorResponse) => {
-          console.error(err.message);
-          return of([]);
-        }),
-        finalize(() => this.appService.loading$.next(false))
-      )
-      .subscribe({
-        next: (v) => {
-          this.appService.legendItem$.next(v);
-        },
-      });
-  }
-
-  /**
    * name
    */
-  public async getCategories() {
-    this.http
-      .get<Category[]>(`${environment.apiurl}category/find-all`)
-      .pipe(
-        first(),
-        tap(() => this.appService.loading$.next(true)),
-        catchError((err) => {
-          throw 'error in source. Details: ' + err;
-        })
-      )
-      .subscribe({
-        next: (v) => {
-          this.appService.category$.next(v);
-        },
-        error: (err) => console.error(err),
-        complete: () => {
-          this.appService.loading$.next(false);
-        },
-      });
-  }
 
   // private shuffleArray(array: Item[]) {
   //   for (let i = array.length; 1 < i; i--) {

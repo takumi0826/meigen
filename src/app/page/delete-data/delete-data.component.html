@@ -1,15 +1,39 @@
 <div class="delete">
   <ng-container *ngIf="!(loading$ | async); else loading">
-    <div class="container" *ngIf="legends.length; else notItemList">
+    <div class="container" *ngIf="legendItem.legends.length; else notItemList">
       <section class="section">
         <h2 class="delete__title">削除するデータを選択</h2>
         <div class="legends">
-          <p *ngFor="let item of legends" class="legends__item">
+          <p
+            *ngFor="
+              let item of legendItem.legends
+                | slice: paging.begin:paging.begin + paging.length
+            "
+            class="legends__item"
+          >
             <mat-checkbox [(ngModel)]="item.cheked" [title]="item.name">{{
               item.name | threePointLeader: 12
             }}</mat-checkbox>
           </p>
         </div>
+        <ul class="paging">
+          <li
+            class="paging__item"
+            *ngFor="
+              let item of arrayNumberLength(legendItem.total, paging.length);
+              index as i
+            "
+          >
+            <button
+              (click)="pager(i)"
+              mat-mini-fab
+              color="primary"
+              aria-label="Example icon button with a menu icon"
+            >
+              {{ i + 1 }}
+            </button>
+          </li>
+        </ul>
       </section>
       <div class="delete__buttonWrap">
         <button

@@ -11,11 +11,7 @@ import { TopService } from './top.service';
   providedIn: 'root',
 })
 export class DeleteDataService {
-  constructor(
-    private http: HttpClient,
-    private topService: TopService,
-    private _snackBar: MatSnackBar
-  ) {}
+  constructor(private http: HttpClient) {}
 
   remove(ids: string) {
     return this.http
@@ -25,25 +21,6 @@ export class DeleteDataService {
         catchError((err) => {
           throw 'error in source. Details: ' + err;
         })
-      )
-      .subscribe({
-        next: () => {
-          this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 2 * 1000,
-            verticalPosition: 'bottom',
-            data: { text: '削除しました' },
-            panelClass: ['success-snackbar'],
-          });
-          this.topService.getLegend();
-        },
-        error: () => {
-          this._snackBar.openFromComponent(SnackBarComponent, {
-            duration: 2 * 1000,
-            verticalPosition: 'bottom',
-            data: { text: '削除に失敗しました' },
-            panelClass: ['failed-snackbar'],
-          });
-        },
-      });
+      );
   }
 }

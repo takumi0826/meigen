@@ -1,4 +1,9 @@
-export type LegendItem = {
+export type Legends = {
+  legends: Legend[];
+  total: number;
+};
+
+export type Legend = {
   id: number;
   meigen: string;
   name: string;

@@ -31,6 +31,17 @@
         <app-meigen-card [item]="item"></app-meigen-card>
       </div>
     </div>
+    <div class="read-more">
+      <button
+        *ngIf="isShowMoreButton$ | async"
+        class="read-more__button"
+        mat-raised-button
+        color="primary"
+        (click)="readMore()"
+      >
+        もっと見る
+      </button>
+    </div>
     <ng-template #notItemList>
       <div class="not-found">
         <mat-icon>sentiment_very_dissatisfied</mat-icon>
