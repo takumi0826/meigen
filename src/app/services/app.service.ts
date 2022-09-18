@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, from, of } from 'rxjs';
 import { first, tap, catchError, finalize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Category, Legends } from '../types/type';
@@ -30,9 +30,9 @@ export class AppService {
       query.toString() ? '?' + query : ''
     }`;
 
+    this.loading$.next(true);
     return this.http.get<Legends>(url).pipe(
       first(),
-      tap(() => this.loading$.next(true)),
       catchError((err: HttpErrorResponse) => {
         console.error(err.message);
         return of({ legends: [], total: 0 });
@@ -42,14 +42,15 @@ export class AppService {
   }
 
   public getCategories() {
+    this.loading$.next(true);
     return this.http
       .get<Category[]>(`${environment.apiurl}category/find-all`)
       .pipe(
         first(),
-        tap(() => this.loading$.next(true)),
         catchError((err) => {
           throw 'error in source. Details: ' + err;
-        })
+        }),
+        finalize(() => this.loading$.next(false))
       );
   }
 }

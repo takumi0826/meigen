@@ -27,6 +27,7 @@ export class CreateDataService {
   constructor(private http: HttpClient, private appService: AppService) {}
 
   loadCategory() {
+    this.appService.loading$.next(true);
     return this.http
       .get<ChildCategory>(
         `${environment.apiurl}category/find-child`,
@@ -34,7 +35,6 @@ export class CreateDataService {
       )
       .pipe(
         first(),
-        tap(() => this.appService.loading$.next(true)),
         catchError((err: HttpErrorResponse) => {
           console.error(err.message);
           return of([]);

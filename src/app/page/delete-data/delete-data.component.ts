@@ -3,7 +3,14 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { makeStateKey } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
-import { first, map, switchMap, tap } from 'rxjs/operators';
+import {
+  filter,
+  first,
+  map,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { SnackBarComponent } from 'src/app/parts/snack-bar/snack-bar.component';
 import { AppService } from 'src/app/services/app.service';
 import { DeleteDataService } from 'src/app/services/delete-data.service';
