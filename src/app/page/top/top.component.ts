@@ -108,7 +108,10 @@ export class TopComponent implements OnInit, OnDestroy {
         first(),
         switchMap((item) =>
           this.appService
-            .getLegend({ offset: this.limit * (count - 1), limit: this.limit })
+            .getLegend(
+              { offset: this.limit * (count - 1), limit: this.limit },
+              true
+            )
             .pipe(
               map((v) => {
                 return {

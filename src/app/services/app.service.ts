@@ -22,7 +22,10 @@ export class AppService {
   /**
    * getLegend
    */
-  public getLegend(params?: { limit?: number; offset?: number }) {
+  public getLegend(
+    params?: { limit?: number; offset?: number },
+    noLoad = false
+  ) {
     const query = new URLSearchParams();
     if (params?.limit) query.append('limit', params.limit.toString());
     if (params?.offset) query.append('offset', params.offset.toString());
@@ -30,7 +33,7 @@ export class AppService {
       query.toString() ? '?' + query : ''
     }`;
 
-    this.loading$.next(true);
+    if (!noLoad) this.loading$.next(true);
     return this.http.get<Legends>(url).pipe(
       first(),
       catchError((err: HttpErrorResponse) => {
