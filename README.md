@@ -1,5 +1,8 @@
 # [レジェンドたちの名言](https://legends-guotations.netlify.app/)
 
+## 動画
+![legend](https://user-images.githubusercontent.com/53050023/193380067-a07d5e9d-3199-49cc-b027-24b0766643a3.gif)
+
 ## 技術スタック
 
 - Angular v14.1.1
@@ -25,3 +28,4 @@
   - Render.com
 - 有料サービス → お金はかかるが勉強としてやるべきか...
   - AWS ECS
+
